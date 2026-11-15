@@ -30,6 +30,8 @@ The executable ends up at `Build\Release\x64\net8.0-windows10.0.19041.0\win-x64\
 
 Do not run it alongside the Microsoft Store version of EarTrumpet; quit that one first.
 
+Do not run the old standalone Quieti (the Rust tray app) at the same time either: it uses the same mute-context GUID, so the two would take over each other's mutes.
+
 ---
 
 [![GitHub issues](https://img.shields.io/github/issues/File-New-Project/EarTrumpet?style=flat-square)](https://github.com/File-New-Project/EarTrumpet/issues) [![GitHub forks](https://img.shields.io/github/forks/File-New-Project/EarTrumpet?style=flat-square)](https://github.com/File-New-Project/EarTrumpet/network) [![GitHub stars](https://img.shields.io/github/stars/File-New-Project/EarTrumpet?style=flat-square)](https://github.com/File-New-Project/EarTrumpet/stargazers) [![GitHub license](https://img.shields.io/github/license/File-New-Project/EarTrumpet?style=flat-square)](https://github.com/File-New-Project/EarTrumpet/blob/master/LICENSE) [![Nuget package](https://img.shields.io/chocolatey/v/eartrumpet?style=flat-square)](https://chocolatey.org/packages/eartrumpet)
