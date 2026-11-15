@@ -109,9 +109,10 @@ public sealed partial class App : IDisposable
 
         var deviceManager = WindowsAudioFactory.Create(AudioDeviceKind.Playback);
         // Quieti: same settings bag as AppSettings. On logoff/shutdown WPF raises Exit only via a posted
-        // callback that may not run in time, so also undo Quieti mutes in SessionEnding (Shutdown runs once).
+        // callback that may not run in time, so also undo Quieti mutes in SessionEnding. That only releases
+        // (the logoff may be cancelled and EarTrumpet keep running); the full Shutdown runs once, on Exit.
         QuietiService.Current.Start(deviceManager, StorageFactory.GetSettings());
-        SessionEnding += (_, __) => QuietiService.Current.Shutdown();
+        SessionEnding += (_, __) => QuietiService.Current.ReleaseAll();
         Exit += (_, __) => QuietiService.Current.Shutdown();
         deviceManager.Loaded += (_, __) => CompleteStartup();
         CollectionViewModel = new DeviceCollectionViewModel(deviceManager, Settings);

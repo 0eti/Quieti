@@ -49,6 +49,11 @@ public sealed class QuietiService
     private HashSet<string> _savedOurs = new(StringComparer.Ordinal);
     private bool _draining;
     private bool _stopped;
+    /// <summary>
+    ///     Ids of the sessions the engine counts as Quieti-muted, refreshed after every engine event. Replaced as a
+    ///     whole, so IsOurs can be read from any thread (volume can be set from an add-on's background trigger).
+    /// </summary>
+    private volatile HashSet<string> _ours = new(StringComparer.Ordinal);
 
     private QuietiService()
     {
@@ -58,8 +63,7 @@ public sealed class QuietiService
     ///     The app key of a session or app row. Desktop apps: the exe file name with its extension, taken from
     ///     AppId (the full image path for desktop apps; ExeName has the extension stripped). Store apps: AppId.
     /// </summary>
-    public static string AppKeyOf(bool isDesktopApp, string appId)
-        => AppRules.KeyForApp(isDesktopApp, appId ?? "", appId ?? "");
+    public static string AppKeyOf(bool isDesktopApp, string appId) => AppRules.AppKeyOf(isDesktopApp, appId);
 
     public void Start(IAudioDeviceManager playback, ISettingsBag settings)
     {
@@ -89,6 +93,12 @@ public sealed class QuietiService
 
     public AppState StateOf(string appKey) => _engine?.StateOf(appKey) ?? AppState.NotRunning;
 
+    /// <summary>
+    ///     The session's mute is Quieti's (the engine's answer: recovered and sibling sessions included, full mutes
+    ///     and unarmed apps excluded). Asked by the mute copy sites and the volume guards. Safe on any thread.
+    /// </summary>
+    public bool IsOurs(string sessionId) => sessionId != null && _ours.Contains(sessionId);
+
     public void ToggleArmed(string appKey)
     {
         if (_engine == null || _stopped || string.IsNullOrEmpty(appKey))
@@ -98,13 +108,34 @@ public sealed class QuietiService
         Feed(new EngineEvent.SetArmed(appKey, !_engine.IsArmed(appKey)), appKey);
     }
 
-    public void ToggleFullMute(string appKey)
+    /// <summary>
+    ///     Full mute on/off for the app. Returns false when Quieti does not handle it (not started or stopped, no key,
+    ///     or no session of the app known to the engine): the caller then toggles IsMuted like upstream EarTrumpet.
+    /// </summary>
+    public bool TryToggleFullMute(string appKey)
     {
-        if (_engine == null || _stopped || string.IsNullOrEmpty(appKey))
+        if (_engine == null || _stopped || string.IsNullOrEmpty(appKey) || _engine.StateOf(appKey) == AppState.NotRunning)
+        {
+            return false;
+        }
+        Feed(new EngineEvent.SetFullMute(appKey, !_engine.IsFullMuted(appKey)), appKey);
+        return true;
+    }
+
+    /// <summary>
+    ///     On logoff/shutdown (SessionEnding): undo Quieti mutes (synchronously) and save, but keep running. If the
+    ///     logoff is cancelled, the next foreground change re-applies the rules (and SaveIfChanged records the re-mutes).
+    /// </summary>
+    public void ReleaseAll()
+    {
+        if (_engine == null || _stopped)
         {
             return;
         }
-        Feed(new EngineEvent.SetFullMute(appKey, _engine.StateOf(appKey) != AppState.FullMuted), appKey);
+        Trace.WriteLine("Quieti ReleaseAll");
+        Feed(new EngineEvent.Shutdown(), null);
+        Save(ArmedKey, _engine.Armed);
+        Save(RecoveredKey, _engine.Ours());
     }
 
     /// <summary>On exit: undo Quieti mutes (synchronously), then save. Runs once.</summary>
@@ -158,7 +189,9 @@ public sealed class QuietiService
                 {
                     touched.Add(nextApp);
                 }
-                foreach (var cmd in _engine.Handle(next))
+                var cmds = _engine.Handle(next);
+                RefreshOurs();
+                foreach (var cmd in cmds)
                 {
                     if (Execute(cmd) is { } cmdApp && cmdApp.Length > 0)
                     {
@@ -176,6 +209,19 @@ public sealed class QuietiService
         {
             _draining = false;
         }
+    }
+
+    private void RefreshOurs()
+    {
+        var ours = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var tracked in _sessions.Values)
+        {
+            if (_engine.IsOurs(tracked.Key))
+            {
+                ours.Add(tracked.Key.Value);
+            }
+        }
+        _ours = ours;
     }
 
     /// <summary>Runs one engine command. Returns the session's app, or null when the session is gone.</summary>

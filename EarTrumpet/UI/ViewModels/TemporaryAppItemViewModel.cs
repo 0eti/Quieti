@@ -26,6 +26,8 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
         get => ChildApps != null ? ChildApps[0].IsMuted : _isMuted;
         set
         {
+            // The user changed the mute here: it is no longer the Quieti mute it was when moved.
+            WasMutedByQuieti = false;
             if (ChildApps != null)
             {
                 ChildApps[0].IsMuted = value;
@@ -72,11 +74,15 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
     public bool IsBackgroundMuteArmed => false;
     public bool IsMutedByQuieti => false;
     public ICommand ToggleBackgroundMute { get; } = new RelayCommand(null);
-    public ICommand ToggleFullMute { get; } = new RelayCommand(null);
+    /// <summary>Upstream's mute toggle (M): no session exists yet for Quieti to full-mute.</summary>
+    public ICommand ToggleFullMute { get; }
     public string MuteButtonToolTip => DisplayName;
 
-    /// <summary>The app this stands in for was muted by Quieti (not by the user) when it was moved.</summary>
-    internal bool WasMutedByQuieti { get; }
+    /// <summary>
+    ///     The app this stands in for was muted by Quieti (not by the user) when it was moved: the engine's answer
+    ///     for its sessions (QuietiService.IsOurs), or the flag of the temporary row it was moved from.
+    /// </summary>
+    internal bool WasMutedByQuieti { get; private set; }
 
     private readonly IAudioDeviceManager _deviceManager;
     private readonly WeakReference<DeviceCollectionViewModel> _parent;
@@ -102,7 +108,13 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
         _deviceManager = deviceManager;
         Id = app.Id;
         _isMuted = app.IsMuted;
-        WasMutedByQuieti = app is AppItemViewModel realApp && QuietiSessions.AllMutedByQuieti(realApp.Session);
+        WasMutedByQuieti = app switch
+        {
+            AppItemViewModel realApp => QuietiSessions.AllMutedByQuieti(realApp.Session),
+            TemporaryAppItemViewModel tempApp => tempApp.WasMutedByQuieti,
+            _ => false,
+        };
+        ToggleFullMute = new RelayCommand(() => IsMuted = !IsMuted);
         _volume = app.Volume;
         Background = app.Background;
         DisplayName = app.DisplayName;

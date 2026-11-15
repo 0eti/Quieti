@@ -83,7 +83,14 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
         _parent = new WeakReference<DeviceViewModel>(parent);
 
         ToggleBackgroundMute = new RelayCommand(() => QuietiService.Current.ToggleArmed(QuietiKey));
-        ToggleFullMute = new RelayCommand(() => QuietiService.Current.ToggleFullMute(QuietiKey));
+        ToggleFullMute = new RelayCommand(() =>
+        {
+            // Rows Quieti cannot key or does not know (no AppId, no session seen yet) keep upstream's plain mute toggle.
+            if (!QuietiService.Current.TryToggleFullMute(QuietiKey))
+            {
+                IsMuted = !IsMuted;
+            }
+        });
         _quietiSubscription = new WeakAppChangedSubscription<AppItemViewModel>(this, static (vm, key) => vm.OnQuietiAppChanged(key));
 
         if (_session.Children != null)
@@ -114,6 +121,7 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
         {
             case nameof(_session.DisplayName):
                 RaisePropertyChanged(nameof(DisplayName));
+                RaisePropertyChanged(nameof(MuteButtonToolTip));
                 break;
             case nameof(_session.IconPath):
                 RaisePropertyChanged(nameof(IconPath));

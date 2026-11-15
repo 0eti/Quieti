@@ -31,13 +31,20 @@ internal static class QuietiSessions
         }
     }
 
-    /// <summary>True when the source has at least one real session and all of them are muted by Quieti.</summary>
+    /// <summary>
+    ///     True when the source has at least one live real session and the engine counts all of them as
+    ///     Quieti-muted (QuietiService.IsOurs). Expired sessions are skipped: the engine no longer tracks them.
+    /// </summary>
     public static bool AllMutedByQuieti(IAudioDeviceSession source)
     {
         var any = false;
         foreach (var real in RealSessions(source))
         {
-            if (!real.IsMutedByQuieti)
+            if (real.State == SessionState.Expired)
+            {
+                continue;
+            }
+            if (!QuietiService.Current.IsOurs(real.Id))
             {
                 return false;
             }
