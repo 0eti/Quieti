@@ -3,6 +3,7 @@ using EarTrumpet.UI.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace EarTrumpet.UI.Views;
 
@@ -18,9 +19,10 @@ public partial class AppItemView : UserControl
         // a right-click on the icon is a full mute (Quieti), and Handled keeps it from opening the popup.
         PreviewMouseRightButtonUp += (_, e) =>
         {
-            if (e.OriginalSource is DependencyObject source && (source == MuteButton || MuteButton.IsAncestorOf(source)))
+            // OriginalSource can be a non-Visual (e.g. a Run in text), which IsAncestorOf rejects with an exception.
+            if (e.OriginalSource == MuteButton || (e.OriginalSource is Visual source && MuteButton.IsAncestorOf(source)))
             {
-                App.ToggleFullMute.Execute(null);
+                App?.ToggleFullMute.Execute(null);
                 e.Handled = true;
                 return;
             }

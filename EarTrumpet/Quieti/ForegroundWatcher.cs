@@ -56,7 +56,15 @@ internal static class ForegroundWatcher
 
     private static void OnEvent(HWINEVENTHOOK hook, uint @event, HWND hwnd, int idObject, int idChild, uint idEventThread, uint dwmsEventTime)
     {
-        s_onChange?.Invoke();
+        // A managed exception must not cross the native user32 callback (it would take the process down).
+        try
+        {
+            s_onChange?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Quieti ForegroundWatcher callback failed: {ex}");
+        }
     }
 
     /// <summary>The current foreground window, or null when there is none. ownPid is this process.</summary>
