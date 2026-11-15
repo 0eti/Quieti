@@ -80,13 +80,34 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
     public string Identifier { get; }
 
     /// <summary>The last mute change was made in the Quieti context and the session is still muted.</summary>
-    public bool IsMutedByQuieti => _isMutedByQuieti;
+    public bool IsMutedByQuieti
+    {
+        get
+        {
+            var snapshot = _muteSnapshot;
+            return snapshot.Muted && snapshot.Context == QuietiContext.Mute;
+        }
+    }
 
     /// <summary>The EventContext of the last notification that changed the mute value (Guid.Empty when null).</summary>
-    public Guid LastMuteChangeContext => _lastMuteChangeContext;
+    public Guid LastMuteChangeContext => _muteSnapshot.Context;
 
     /// <summary>The last notification that changed the mute value carried QuietiContext.Mute.</summary>
-    public bool LastMuteChangeWasQuieti => _lastMuteChangeContext == QuietiContext.Mute;
+    public bool LastMuteChangeWasQuieti => _muteSnapshot.Context == QuietiContext.Mute;
+
+    /// <summary>
+    ///     Raised on the UI thread once per notification that changed the mute value, with that
+    ///     notification's own (muted, context) values captured on the COM thread. Task 5's QuietiService
+    ///     subscribes to this instead of PropertyChanged(IsMuted). The polled properties
+    ///     (IsMutedByQuieti, LastMuteChangeContext, LastMuteChangeWasQuieti) reflect only the latest notification.
+    /// </summary>
+    internal event Action<AudioDeviceSession, bool, Guid> MuteNotified;
+
+    private sealed class MuteSnapshot(bool muted, Guid context)
+    {
+        public bool Muted { get; } = muted;
+        public Guid Context { get; } = context;
+    }
 
     public void SetMute(bool mute, Guid context)
     {
@@ -155,9 +176,9 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
     private readonly AudioDeviceSessionChannelCollection _channels;
     private float _volume;
     private AudioSessionState _state;
-    private bool _isMuted;
-    private volatile bool _isMutedByQuieti;
-    private Guid _lastMuteChangeContext; // Written on the COM thread before the PropertyChanged dispatch.
+    private volatile bool _isMuted;
+    // Immutable; replaced as a whole so (muted, context) is never observed torn.
+    private volatile MuteSnapshot _muteSnapshot;
     private bool _isDisconnected;
     private bool _isMoved;
     private bool _moveOnInactive;
@@ -180,6 +201,7 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         
         _simpleVolume.GetMute(out var isMuted);
         _isMuted = isMuted;
+        _muteSnapshot = new MuteSnapshot(_isMuted, Guid.Empty);
 
         IsSystemSoundsSession = ((IAudioSessionControl2)_session).IsSystemSoundsSession() == HRESULT.S_OK;
         ProcessId = ReadProcessId();
@@ -467,13 +489,13 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
     {
         _volume = NewVolume;
         var newMuted = NewMute != 0;
-        if (newMuted != _isMuted)
+        var context = EventContext == null ? Guid.Empty : *EventContext;
+        var changed = newMuted != _isMuted;
+        if (changed)
         {
-            // Update the context before _isMuted and before the PropertyChanged dispatch below,
-            // so handlers on the UI thread always see the context of the change they are notified about.
-            var context = EventContext == null ? Guid.Empty : *EventContext;
-            _lastMuteChangeContext = context;
-            _isMutedByQuieti = newMuted && context == QuietiContext.Mute;
+            // Snapshot first, then _isMuted. The lambda below captures this notification's own values,
+            // so MuteNotified handlers get a coherent pair even if later notifications arrive meanwhile.
+            _muteSnapshot = new MuteSnapshot(newMuted, context);
         }
         _isMuted = newMuted;
 
@@ -481,6 +503,10 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         {
             RaisePropertyChanged(nameof(Volume));
             RaisePropertyChanged(nameof(IsMuted));
+            if (changed)
+            {
+                MuteNotified?.Invoke(this, newMuted, context);
+            }
         }));
     }
 
