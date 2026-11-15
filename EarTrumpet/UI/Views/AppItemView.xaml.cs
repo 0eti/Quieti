@@ -14,7 +14,18 @@ public partial class AppItemView : UserControl
     {
         InitializeComponent();
 
-        PreviewMouseRightButtonUp += (_, __) => OpenPopup();
+        // Preview events tunnel from the row down, so the row sees the click before the button does:
+        // a right-click on the icon is a full mute (Quieti), and Handled keeps it from opening the popup.
+        PreviewMouseRightButtonUp += (_, e) =>
+        {
+            if (e.OriginalSource is DependencyObject source && (source == MuteButton || MuteButton.IsAncestorOf(source)))
+            {
+                App.ToggleFullMute.Execute(null);
+                e.Handled = true;
+                return;
+            }
+            OpenPopup();
+        };
         Loaded += (_, __) =>
         {
             var container = this.FindVisualParent<ListViewItem>();
@@ -50,7 +61,11 @@ public partial class AppItemView : UserControl
         {
             case Key.M:
             case Key.OemPeriod:
-                App.IsMuted = !App.IsMuted;
+                App.ToggleFullMute.Execute(null);
+                e.Handled = true;
+                break;
+            case Key.B:
+                App.ToggleBackgroundMute.Execute(null);
                 e.Handled = true;
                 break;
             case Key.Right:

@@ -1,5 +1,6 @@
 ﻿using EarTrumpet.DataModel.Audio;
 using EarTrumpet.Extensions;
+using EarTrumpet.UI.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -57,6 +58,11 @@ public class SettingsAppItemViewModel : BindableBase, IAppItemViewModel
     public IDeviceViewModel Parent => throw new NotImplementedException();
     public ICommand Remove { get; set; }
     public string PackageInstallPath { get; set; }
+    public bool IsBackgroundMuteArmed => false;
+    public bool IsMutedByQuieti => false;
+    public ICommand ToggleBackgroundMute { get; } = new RelayCommand(null);
+    public ICommand ToggleFullMute { get; } = new RelayCommand(null);
+    public string MuteButtonToolTip => DisplayName;
 
     public SettingsAppItemViewModel(IAudioDeviceSession session)
     {

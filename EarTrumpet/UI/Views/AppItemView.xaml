@@ -4,6 +4,7 @@
              xmlns:Theme="clr-namespace:EarTrumpet.UI.Themes"
              xmlns:ctl="clr-namespace:EarTrumpet.UI.Controls"
              xmlns:conv="clr-namespace:EarTrumpet.UI.Converters"
+             xmlns:quieti="clr-namespace:EarTrumpet.Quieti"
              Height="{DynamicResource Mutable_AppItemCellHeight}"
              IsTabStop="False">
     <UserControl.Resources>
@@ -63,9 +64,9 @@
             <Button Name="MuteButton"
                     Width="{DynamicResource Mutable_AppIconSize}"
                     Height="{DynamicResource Mutable_AppIconSize}"
-                    Command="{Binding ToggleMute}"
+                    Command="{Binding ToggleBackgroundMute}"
                     IsTabStop="False"
-                    ToolTip="{Binding DisplayName}">
+                    ToolTip="{Binding MuteButtonToolTip}">
                 <Button.Style>
                     <Style BasedOn="{StaticResource MuteButton}" TargetType="Button">
                         <Style.Triggers>
@@ -76,13 +77,67 @@
                     </Style>
                 </Button.Style>
                 <Button.Content>
-                    <TextBlock Theme:Brush.Foreground="{Binding (Theme:Brush.Foreground), RelativeSource={RelativeSource AncestorType=Button}}"
-                               FontSize="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
-                               Opacity="0.8"
-                               Style="{StaticResource GlyphTextBlockStyle}"
-                               Text="&#xE74F;" />
+                    <Grid>
+                        <TextBlock Theme:Brush.Foreground="{Binding (Theme:Brush.Foreground), RelativeSource={RelativeSource AncestorType=Button}}"
+                                   FontSize="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
+                                   Opacity="0.8"
+                                   Text="&#xE74F;">
+                            <TextBlock.Style>
+                                <Style BasedOn="{StaticResource GlyphTextBlockStyle}" TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMutedByQuieti}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <quieti:CrescentBadge Width="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
+                                              Height="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              FillTheme="{Binding (Theme:Brush.Foreground), RelativeSource={RelativeSource AncestorType=Button}}"
+                                              Opacity="0.8">
+                            <quieti:CrescentBadge.Style>
+                                <Style TargetType="quieti:CrescentBadge">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMutedByQuieti}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </quieti:CrescentBadge.Style>
+                        </quieti:CrescentBadge>
+                    </Grid>
                 </Button.Content>
             </Button>
+            <!-- Quieti badge: 40% of the icon, bottom right, only while "mute while in background" is armed. -->
+            <Grid Width="{DynamicResource Mutable_AppIconSize}"
+                  Height="{DynamicResource Mutable_AppIconSize}"
+                  HorizontalAlignment="Center"
+                  IsHitTestVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <quieti:CrescentBadge Grid.Row="1" Grid.Column="1">
+                    <quieti:CrescentBadge.Style>
+                        <Style TargetType="quieti:CrescentBadge">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsBackgroundMuteArmed}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </quieti:CrescentBadge.Style>
+                </quieti:CrescentBadge>
+            </Grid>
         </Grid>
         <ctl:VolumeSlider Grid.Column="1"
                           PeakValue1="{Binding PeakValue1}"

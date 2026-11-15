@@ -3,10 +3,12 @@ using EarTrumpet.DataModel.Audio;
 using EarTrumpet.DataModel.WindowsAudio;
 using EarTrumpet.Extensions;
 using EarTrumpet.Quieti;
+using EarTrumpet.UI.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -67,6 +69,11 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
     public uint ProcessId { get; }
     public IDeviceViewModel Parent { get; }
     public string PackageInstallPath { get; }
+    public bool IsBackgroundMuteArmed => false;
+    public bool IsMutedByQuieti => false;
+    public ICommand ToggleBackgroundMute { get; } = new RelayCommand(null);
+    public ICommand ToggleFullMute { get; } = new RelayCommand(null);
+    public string MuteButtonToolTip => DisplayName;
 
     /// <summary>The app this stands in for was muted by Quieti (not by the user) when it was moved.</summary>
     internal bool WasMutedByQuieti { get; }

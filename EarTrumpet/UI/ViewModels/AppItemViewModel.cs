@@ -2,6 +2,8 @@
 using EarTrumpet.DataModel.WindowsAudio.Internal;
 using EarTrumpet.DataModel.WindowsAudio;
 using EarTrumpet.Extensions;
+using EarTrumpet.Quieti;
+using EarTrumpet.UI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +11,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Globalization;
 
@@ -58,6 +61,17 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
 
     internal IAudioDeviceSession Session => _session;
 
+    // Quieti
+    private string QuietiKey => QuietiService.AppKeyOf(IsDesktopApp, AppId);
+    public bool IsBackgroundMuteArmed => QuietiService.Current.IsArmed(QuietiKey);
+    public bool IsMutedByQuieti => QuietiService.Current.StateOf(QuietiKey) == AppState.MutedByQuieti;
+    public ICommand ToggleBackgroundMute { get; }
+    public ICommand ToggleFullMute { get; }
+    public string MuteButtonToolTip => DisplayName + "\n" + Properties.Resources.QuietiMuteButtonHint;
+
+    // Weak, so the static QuietiService does not keep this view model alive.
+    private readonly WeakAppChangedSubscription<AppItemViewModel> _quietiSubscription;
+
     private readonly IAudioDeviceSession _session;
     private readonly WeakReference<DeviceViewModel> _parent;
 
@@ -68,6 +82,10 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
         _session.PropertyChanged += Session_PropertyChanged;
         _parent = new WeakReference<DeviceViewModel>(parent);
 
+        ToggleBackgroundMute = new RelayCommand(() => QuietiService.Current.ToggleArmed(QuietiKey));
+        ToggleFullMute = new RelayCommand(() => QuietiService.Current.ToggleFullMute(QuietiKey));
+        _quietiSubscription = new WeakAppChangedSubscription<AppItemViewModel>(this, static (vm, key) => vm.OnQuietiAppChanged(key));
+
         if (_session.Children != null)
         {
             _session.Children.CollectionChanged += Children_CollectionChanged;
@@ -77,7 +95,17 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
 
     ~AppItemViewModel()
     {
+        _quietiSubscription?.Dispose();
         _session.PropertyChanged -= Session_PropertyChanged;
+    }
+
+    private void OnQuietiAppChanged(string key)
+    {
+        if (key == QuietiKey)
+        {
+            RaisePropertyChanged(nameof(IsBackgroundMuteArmed));
+            RaisePropertyChanged(nameof(IsMutedByQuieti));
+        }
     }
 
     private void Session_PropertyChanged(object sender, PropertyChangedEventArgs e)

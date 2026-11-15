@@ -676,4 +676,7 @@
   <data name="SettingsShowFullMixerWindowOnStartup" xml:space="preserve">
     <value>시작 시 전체 믹서 창이 표시됩니다</value>
   </data>
+  <data name="QuietiMuteButtonHint" xml:space="preserve">
+    <value>왼쪽 클릭: 뒤에 있으면 음소거 · 오른쪽 클릭: 음소거</value>
+  </data>
 </root>

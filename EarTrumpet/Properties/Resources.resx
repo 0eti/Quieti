@@ -685,4 +685,7 @@ Open [https://eartrumpet.app/jmp/fixstartup] to resolve this?</value>
   <data name="VolumeUnit_Decibel" xml:space="preserve">
     <value>dB</value>
   </data>
+  <data name="QuietiMuteButtonHint" xml:space="preserve">
+    <value>Left-click: mute while in background · Right-click: mute</value>
+  </data>
 </root>

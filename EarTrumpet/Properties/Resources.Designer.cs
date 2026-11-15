@@ -1172,6 +1172,15 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Left-click: mute while in background · Right-click: mute.
+        /// </summary>
+        public static string QuietiMuteButtonHint {
+            get {
+                return ResourceManager.GetString("QuietiMuteButtonHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recording.
         /// </summary>
         public static string RecordingDeviceGroupText {

@@ -1,6 +1,7 @@
 ﻿using EarTrumpet.UI.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace EarTrumpet.UI.ViewModels;
@@ -28,4 +29,11 @@ public interface IAppItemViewModel : IAppIconSource, INotifyPropertyChanged
     void UpdatePeakValueForeground();
     void UpdatePeakValueBackground();
     IDeviceViewModel Parent { get; }
+
+    // Quieti: mute while in the background (left click), full mute (icon right click).
+    bool IsBackgroundMuteArmed { get; }
+    bool IsMutedByQuieti { get; }
+    ICommand ToggleBackgroundMute { get; }
+    ICommand ToggleFullMute { get; }
+    string MuteButtonToolTip { get; }
 }
