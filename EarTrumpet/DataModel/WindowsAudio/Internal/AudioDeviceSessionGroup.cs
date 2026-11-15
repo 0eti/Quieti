@@ -1,5 +1,6 @@
 ﻿using EarTrumpet.DataModel.Audio;
 using EarTrumpet.Extensions;
+using EarTrumpet.Quieti;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -205,7 +206,14 @@ internal class AudioDeviceSessionGroup : BindableBase, IAudioDeviceSession, IAud
         session.PropertyChanged += Session_PropertyChanged;
 
         // Inherit properties (safely) from existing streams
-        session.IsMuted = _sessions[0].IsMuted || session.IsMuted;
+        if (!session.IsMuted && _sessions[0].IsMuted && QuietiSessions.AllMutedByQuieti(_sessions[0]))
+        {
+            QuietiSessions.MuteByQuieti(session);
+        }
+        else
+        {
+            session.IsMuted = _sessions[0].IsMuted || session.IsMuted;
+        }
     }
 
     public void RemoveSession(IAudioDeviceSession session)

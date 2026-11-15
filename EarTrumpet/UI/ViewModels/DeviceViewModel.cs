@@ -1,6 +1,7 @@
 ﻿using EarTrumpet.DataModel.Audio;
 using EarTrumpet.DataModel.WindowsAudio;
 using EarTrumpet.Extensions;
+using EarTrumpet.Quieti;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -217,7 +218,15 @@ public class DeviceViewModel : AudioSessionViewModel, IDeviceViewModel
             {
                 // Remove the fake app entry after copying any changes the user did.
                 newSession.Volume = app.Volume;
-                newSession.IsMuted = app.IsMuted;
+                if (app.IsMuted && !newSession.IsMuted && app is TemporaryAppItemViewModel { WasMutedByQuieti: true })
+                {
+                    // The original was muted by Quieti: keep it a Quieti mute on the new device's sessions.
+                    QuietiSessions.MuteByQuieti(newSession.Session);
+                }
+                else
+                {
+                    newSession.IsMuted = app.IsMuted;
+                }
                 Apps.Remove(app);
                 break;
             }

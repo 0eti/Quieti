@@ -1,4 +1,5 @@
 ﻿using EarTrumpet.DataModel.Audio;
+using EarTrumpet.Quieti;
 using EarTrumpet.Interop.MMDeviceAPI;
 using System;
 using System.Collections.Generic;
@@ -115,13 +116,27 @@ internal class AudioDeviceSessionCollection : IAudioSessionNotification
                         {
                             // If there is a session in the same process, inherit safely.
                             // (Avoids a minesweeper ad playing at max volume when app should be muted)
-                            session.IsMuted = session.IsMuted || appSessionGroup.IsMuted;
+                            if (!session.IsMuted && appSessionGroup.IsMuted && QuietiSessions.AllMutedByQuieti(appSessionGroup))
+                            {
+                                QuietiSessions.MuteByQuieti(session);
+                            }
+                            else
+                            {
+                                session.IsMuted = session.IsMuted || appSessionGroup.IsMuted;
+                            }
                             appSessionGroup.AddSession(session);
                             return;
                         }
                     }
 
-                    session.IsMuted = session.IsMuted || appGroup.IsMuted;
+                    if (!session.IsMuted && appGroup.IsMuted && QuietiSessions.AllMutedByQuieti(appGroup))
+                    {
+                        QuietiSessions.MuteByQuieti(session);
+                    }
+                    else
+                    {
+                        session.IsMuted = session.IsMuted || appGroup.IsMuted;
+                    }
                     appGroup.AddSession(new AudioDeviceSessionGroup(parent, session));
                     return;
                 }

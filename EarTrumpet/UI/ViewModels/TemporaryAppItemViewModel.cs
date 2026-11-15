@@ -2,6 +2,7 @@
 using EarTrumpet.DataModel.Audio;
 using EarTrumpet.DataModel.WindowsAudio;
 using EarTrumpet.Extensions;
+using EarTrumpet.Quieti;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -67,6 +68,9 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
     public IDeviceViewModel Parent { get; }
     public string PackageInstallPath { get; }
 
+    /// <summary>The app this stands in for was muted by Quieti (not by the user) when it was moved.</summary>
+    internal bool WasMutedByQuieti { get; }
+
     private readonly IAudioDeviceManager _deviceManager;
     private readonly WeakReference<DeviceCollectionViewModel> _parent;
     private readonly Dispatcher _currentDispatcher = Dispatcher.CurrentDispatcher;
@@ -91,6 +95,7 @@ public class TemporaryAppItemViewModel : BindableBase, IAppItemViewModel
         _deviceManager = deviceManager;
         Id = app.Id;
         _isMuted = app.IsMuted;
+        WasMutedByQuieti = app is AppItemViewModel realApp && QuietiSessions.AllMutedByQuieti(realApp.Session);
         _volume = app.Volume;
         Background = app.Background;
         DisplayName = app.DisplayName;

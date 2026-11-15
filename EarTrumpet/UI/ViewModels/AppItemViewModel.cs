@@ -56,6 +56,8 @@ public class AppItemViewModel : AudioSessionViewModel, IAppItemViewModel
 
     public string PackageInstallPath => _session.PackageInstallPath;
 
+    internal IAudioDeviceSession Session => _session;
+
     private readonly IAudioDeviceSession _session;
     private readonly WeakReference<DeviceViewModel> _parent;
 

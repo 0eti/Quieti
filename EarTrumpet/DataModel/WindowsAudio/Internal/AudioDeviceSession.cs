@@ -3,6 +3,7 @@ using EarTrumpet.DataModel.Audio;
 using EarTrumpet.Extensions;
 using EarTrumpet.Interop;
 using EarTrumpet.Interop.MMDeviceAPI;
+using EarTrumpet.Quieti;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -67,15 +68,35 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         {
             if (value != _isMuted)
             {
-                try
-                {
-                    _simpleVolume.SetMute(value ? new BOOL(1) : new BOOL(0), Guid.Empty);
-                }
-                catch (Exception ex) when (ex.Is(HRESULT.AUDCLNT_E_DEVICE_INVALIDATED))
-                {
-                    // Expected in some cases.
-                }
+                SetMute(value, Guid.Empty);
             }
+        }
+    }
+
+    /// <summary>
+    ///     Session identifier (IAudioSessionControl2.GetSessionIdentifier), the string AppRules.AppOfIdentifier parses.
+    ///     Not the same as Id, which is the session instance identifier.
+    /// </summary>
+    public string Identifier { get; }
+
+    /// <summary>The last mute change was made in the Quieti context and the session is still muted.</summary>
+    public bool IsMutedByQuieti => _isMutedByQuieti;
+
+    /// <summary>The EventContext of the last notification that changed the mute value (Guid.Empty when null).</summary>
+    public Guid LastMuteChangeContext => _lastMuteChangeContext;
+
+    /// <summary>The last notification that changed the mute value carried QuietiContext.Mute.</summary>
+    public bool LastMuteChangeWasQuieti => _lastMuteChangeContext == QuietiContext.Mute;
+
+    public void SetMute(bool mute, Guid context)
+    {
+        try
+        {
+            _simpleVolume.SetMute(mute ? new BOOL(1) : new BOOL(0), context);
+        }
+        catch (Exception ex) when (ex.Is(HRESULT.AUDCLNT_E_DEVICE_INVALIDATED))
+        {
+            // Expected in some cases.
         }
     }
 
@@ -135,6 +156,8 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
     private float _volume;
     private AudioSessionState _state;
     private bool _isMuted;
+    private volatile bool _isMutedByQuieti;
+    private Guid _lastMuteChangeContext; // Written on the COM thread before the PropertyChanged dispatch.
     private bool _isDisconnected;
     private bool _isMoved;
     private bool _moveOnInactive;
@@ -171,6 +194,8 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         _isRegistered = true;
         ((IAudioSessionControl2)_session).GetSessionInstanceIdentifier(out var sessionId);
         _id = sessionId.ToString();
+        ((IAudioSessionControl2)_session).GetSessionIdentifier(out var identifier);
+        Identifier = identifier.ToString();
 
         Trace.WriteLine($"AudioDeviceSession Create {ExeName} {_id}");
 
@@ -224,7 +249,11 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         value = value.Bound(0, 1f);
         _simpleVolume.SetMasterVolume(value, Guid.Empty);
         _volume = value;
-        IsMuted = _volume.ToVolumeInt() == 0;
+        var isZero = _volume.ToVolumeInt() == 0;
+        if (!AppRules.ShouldKeepQuietiMuteOnVolumeChange(IsMutedByQuieti, isZero))
+        {
+            IsMuted = isZero;
+        }
     }
 
     public void SetVolumeLogarithmic(float value)
@@ -233,7 +262,11 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
         // We must convert manually here because sessions use linear volume.
         _simpleVolume.SetMasterVolume(value.LogToLinear(), Guid.Empty);
         _volume = value;
-        IsMuted = value <= App.Settings.LogarithmicVolumeMinDb;
+        var isZero = value <= App.Settings.LogarithmicVolumeMinDb;
+        if (!AppRules.ShouldKeepQuietiMuteOnVolumeChange(IsMutedByQuieti, isZero))
+        {
+            IsMuted = isZero;
+        }
     }
 
     public void Hide()
@@ -433,7 +466,16 @@ internal class AudioDeviceSession : BindableBase, IAudioSessionEvents, IAudioDev
     unsafe void IAudioSessionEvents.OnSimpleVolumeChanged(float NewVolume, BOOL NewMute, Guid* EventContext)
     {
         _volume = NewVolume;
-        _isMuted = NewMute != 0;
+        var newMuted = NewMute != 0;
+        if (newMuted != _isMuted)
+        {
+            // Update the context before _isMuted and before the PropertyChanged dispatch below,
+            // so handlers on the UI thread always see the context of the change they are notified about.
+            var context = EventContext == null ? Guid.Empty : *EventContext;
+            _lastMuteChangeContext = context;
+            _isMutedByQuieti = newMuted && context == QuietiContext.Mute;
+        }
+        _isMuted = newMuted;
 
         _dispatcher.BeginInvoke((Action)(() =>
         {
