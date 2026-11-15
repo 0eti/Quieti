@@ -63,11 +63,11 @@ public sealed class MuteEngine
         {
             return AppState.CannotMute;
         }
-        if (ss.All(s => s.Muted))
+        if (ss.All(s => s.Muted) && ss.Any(s => s.Full))
         {
-            return ss.Any(s => s.Full) ? AppState.FullMuted : AppState.MutedByQuieti;
+            return AppState.FullMuted;
         }
-        return AppState.Playing;
+        return ss.All(s => s.Ours) ? AppState.MutedByQuieti : AppState.Playing;
     }
 
     public IReadOnlyList<SetMuteCommand> Handle(EngineEvent ev)
@@ -182,7 +182,12 @@ public sealed class MuteEngine
         if (c.Ours)
         {
             // Quieti가 바꾼 것(복사된 음소거 포함)
-            s.Ours = c.Muted;
+            // 완전 음소거 뒤에 늦게 온 Quieti 통지는 사용자 음소거를 덮지 않는다
+            s.Ours = c.Muted && !s.Full;
+            if (!c.Muted)
+            {
+                s.Full = false;
+            }
             return;
         }
         s.Ours = false;

@@ -418,8 +418,23 @@ public class MuteEngineTests
         e.Handle(Fore(1, Game));
         e.Handle(Added("v1", 2, Video, false));
         Cmds(e.Handle(Added("v2", 3, Video, false)), Mute("v2", true));
+        // v2는 사용자가 켜서 엔진은 지시하지 않았는데, 그 뒤 Quieti 음소거 통지(복사된 음소거)가 온다
+        Cmds(e.Handle(User("v2", false)));
         Cmds(e.Handle(new EngineEvent.MuteChanged(K("v2"), true, true)));
         Assert.Equal(AppState.MutedByQuieti, e.StateOf(Video));
         Cmds(e.Handle(Fore(2, Video)), Mute("v1", false), Mute("v2", false));
+    }
+
+    [Fact]
+    public void late_quieti_echo_does_not_override_full_mute()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        Cmds(e.Handle(Added("v", 2, Video, false)), Mute("v", true));
+        Cmds(e.Handle(Full(Video, true)));
+        Cmds(e.Handle(new EngineEvent.MuteChanged(K("v"), true, true)));
+        Assert.Equal(AppState.FullMuted, e.StateOf(Video));
+        Cmds(e.Handle(Fore(2, Video)));
+        Assert.Equal(AppState.FullMuted, e.StateOf(Video));
     }
 }
