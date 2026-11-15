@@ -11,6 +11,7 @@ CallNextHookEx
 CloseHandle
 ClosePackageInfo
 CLSCTX
+CreateToolhelp32Snapshot
 DeleteObject
 DEVICE_STATE
 DEVPKEY_Device_DeviceDesc
@@ -21,7 +22,9 @@ DWM_WINDOW_CORNER_PREFERENCE
 DwmSetWindowAttribute
 DWMWINDOWATTRIBUTE
 EDataFlow
+EnumChildWindows
 ERole
+EVENT_SYSTEM_FOREGROUND
 FindPackagesByPackageFamily
 FindWindow
 FindWindowEx
@@ -107,6 +110,8 @@ PKEY_AudioEndpoint_PhysicalSpeakers
 PKEY_Device_FriendlyName
 PKEY_ItemNameDisplay
 PKEY_AppUserModel_ID
+Process32FirstW
+Process32NextW
 PROPERTYKEY
 PropVariantClear
 QueryFullProcessImageName
@@ -133,6 +138,7 @@ SetWindowLong
 SetWindowLongPtr
 SetWindowPos
 SetWindowsHookEx
+SetWinEventHook
 SFGAO_FLAGS
 SHAppBarMessage
 SHCreateItemFromParsingName
@@ -148,6 +154,7 @@ SYSTEM_METRICS_INDEX
 SYSTEM_PARAMETERS_INFO_ACTION
 TB_GETTOOLTIPS
 TTM_POPUP
+UnhookWinEvent
 UnregisterHotKey
 WAIT_EVENT
 WaitForMultipleObjects
@@ -158,6 +165,7 @@ WINDOW_LONG_PTR_INDEX
 WINDOW_STYLE
 WINDOWS_HOOK_ID
 WindowsCreateString
+WINEVENT_OUTOFCONTEXT
 WM_CONTEXTMENU
 WM_DISPLAYCHANGE
 WM_HOTKEY

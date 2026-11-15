@@ -7,12 +7,14 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using EarTrumpet.DataModel.Storage;
 using EarTrumpet.DataModel.WindowsAudio;
 using EarTrumpet.Diagnosis;
 using EarTrumpet.Extensibility;
 using EarTrumpet.Extensibility.Hosting;
 using EarTrumpet.Extensions;
 using EarTrumpet.Interop.Helpers;
+using EarTrumpet.Quieti;
 using EarTrumpet.UI.Helpers;
 using EarTrumpet.UI.ViewModels;
 using EarTrumpet.UI.Views;
@@ -106,6 +108,9 @@ public sealed partial class App : IDisposable
         ((UI.Themes.Manager)Resources["ThemeManager"]).Load();
 
         var deviceManager = WindowsAudioFactory.Create(AudioDeviceKind.Playback);
+        // Quieti: same settings bag as AppSettings. WPF's SessionEnding (logoff, shutdown) also ends in Exit.
+        QuietiService.Current.Start(deviceManager, StorageFactory.GetSettings());
+        Exit += (_, __) => QuietiService.Current.Shutdown();
         deviceManager.Loaded += (_, __) => CompleteStartup();
         CollectionViewModel = new DeviceCollectionViewModel(deviceManager, Settings);
 

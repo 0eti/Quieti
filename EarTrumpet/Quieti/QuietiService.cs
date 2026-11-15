@@ -1,0 +1,433 @@
+using EarTrumpet.DataModel.AppInformation;
+using EarTrumpet.DataModel.Audio;
+using EarTrumpet.DataModel.Storage;
+using EarTrumpet.DataModel.WindowsAudio.Internal;
+using EarTrumpet.Interop.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+
+namespace EarTrumpet.Quieti;
+
+/// <summary>
+///     Connects the MuteEngine to EarTrumpet: playback sessions in, foreground window in, mute commands
+///     out, armed apps and Quieti mutes persisted. Everything runs on the UI thread.
+/// </summary>
+public sealed class QuietiService
+{
+    private const string ArmedKey = "Quieti.Armed";
+    private const string RecoveredKey = "Quieti.Recovered";
+
+    public static QuietiService Current { get; } = new();
+
+    /// <summary>Raised with an app key whose IsArmed or StateOf may have changed (to refresh its rows).</summary>
+    public event Action<string> AppChanged;
+
+    private sealed class Tracked(AudioDeviceSession session, SessionKey key, string app)
+    {
+        public AudioDeviceSession Session { get; } = session;
+        public SessionKey Key { get; } = key;
+        public string App { get; } = app;
+    }
+
+    private readonly EchoFilter _filter = new();
+    /// <summary>Events waiting to be handled, each with the app it touches (null: none).</summary>
+    private readonly Queue<(EngineEvent Event, string App)> _pending = new();
+    /// <summary>Real sessions by AudioDeviceSession.Id.</summary>
+    private readonly Dictionary<string, Tracked> _sessions = new(StringComparer.Ordinal);
+    /// <summary>Group collections under the playback devices that we listen to.</summary>
+    private readonly HashSet<INotifyCollectionChanged> _watched = [];
+    private readonly uint _ownPid = (uint)Environment.ProcessId;
+
+    private MuteEngine _engine;
+    private IAudioDeviceManager _playback;
+    private ISettingsBag _settings;
+    private HashSet<string> _savedArmed = new(StringComparer.Ordinal);
+    private HashSet<string> _savedOurs = new(StringComparer.Ordinal);
+    private bool _draining;
+    private bool _stopped;
+
+    private QuietiService()
+    {
+    }
+
+    /// <summary>
+    ///     The app key of a session or app row. Desktop apps: the exe file name with its extension, taken from
+    ///     AppId (the full image path for desktop apps; ExeName has the extension stripped). Store apps: AppId.
+    /// </summary>
+    public static string AppKeyOf(bool isDesktopApp, string appId)
+        => AppRules.KeyForApp(isDesktopApp, appId ?? "", appId ?? "");
+
+    public void Start(IAudioDeviceManager playback, ISettingsBag settings)
+    {
+        if (_engine != null)
+        {
+            return;
+        }
+        _playback = playback;
+        _settings = settings;
+        var armed = Load(ArmedKey);
+        var recovered = Load(RecoveredKey);
+        _savedArmed = new HashSet<string>(armed, StringComparer.Ordinal);
+        _savedOurs = new HashSet<string>(recovered, StringComparer.Ordinal);
+        _engine = new MuteEngine(armed, recovered);
+        Trace.WriteLine($"Quieti Start armed={armed.Length} recovered={recovered.Length}");
+
+        // The engine treats every armed app as background until it knows the foreground:
+        // feed the current foreground before any session (Rust ruling).
+        ForegroundWatcher.Install(OnForeground);
+        OnForeground();
+
+        _playback.Devices.CollectionChanged += OnModelChanged;
+        Resync();
+    }
+
+    public bool IsArmed(string appKey) => _engine?.IsArmed(appKey) ?? false;
+
+    public AppState StateOf(string appKey) => _engine?.StateOf(appKey) ?? AppState.NotRunning;
+
+    public void ToggleArmed(string appKey)
+    {
+        if (_engine == null || _stopped || string.IsNullOrEmpty(appKey))
+        {
+            return;
+        }
+        Feed(new EngineEvent.SetArmed(appKey, !_engine.IsArmed(appKey)), appKey);
+    }
+
+    public void ToggleFullMute(string appKey)
+    {
+        if (_engine == null || _stopped || string.IsNullOrEmpty(appKey))
+        {
+            return;
+        }
+        Feed(new EngineEvent.SetFullMute(appKey, _engine.StateOf(appKey) != AppState.FullMuted), appKey);
+    }
+
+    /// <summary>On exit: undo Quieti mutes (synchronously), then save. Runs once.</summary>
+    public void Shutdown()
+    {
+        if (_engine == null || _stopped)
+        {
+            return;
+        }
+        Trace.WriteLine("Quieti Shutdown");
+        ForegroundWatcher.Uninstall();
+        Feed(new EngineEvent.Shutdown(), null);
+        _stopped = true;
+
+        _playback.Devices.CollectionChanged -= OnModelChanged;
+        foreach (var collection in _watched)
+        {
+            collection.CollectionChanged -= OnModelChanged;
+        }
+        _watched.Clear();
+        foreach (var tracked in _sessions.Values)
+        {
+            tracked.Session.MuteNotified -= OnMuteNotified;
+            tracked.Session.PropertyChanged -= OnSessionPropertyChanged;
+        }
+        Save(ArmedKey, _engine.Armed);
+        Save(RecoveredKey, _engine.Ours());
+    }
+
+    // ---- Events into the engine ----
+
+    /// <summary>
+    ///     Handles ev and the events its commands cause, in order. Re-entrant calls (from a command,
+    ///     a handler or a nested message pump) only queue, so nothing recurses.
+    /// </summary>
+    private void Feed(EngineEvent ev, string app)
+    {
+        _pending.Enqueue((ev, app));
+        if (_draining)
+        {
+            return;
+        }
+        _draining = true;
+        try
+        {
+            while (_pending.Count > 0)
+            {
+                var (next, nextApp) = _pending.Dequeue();
+                var touched = new HashSet<string>(StringComparer.Ordinal);
+                if (!string.IsNullOrEmpty(nextApp))
+                {
+                    touched.Add(nextApp);
+                }
+                foreach (var cmd in _engine.Handle(next))
+                {
+                    if (Execute(cmd) is { } cmdApp && cmdApp.Length > 0)
+                    {
+                        touched.Add(cmdApp);
+                    }
+                }
+                SaveIfChanged();
+                foreach (var changed in touched)
+                {
+                    AppChanged?.Invoke(changed);
+                }
+            }
+        }
+        finally
+        {
+            _draining = false;
+        }
+    }
+
+    /// <summary>Runs one engine command. Returns the session's app, or null when the session is gone.</summary>
+    private string Execute(SetMuteCommand cmd)
+    {
+        if (!_sessions.TryGetValue(cmd.Key.Value, out var tracked))
+        {
+            return null;
+        }
+        var session = tracked.Session;
+        var before = session.IsMuted;
+        try
+        {
+            session.SetMute(cmd.Mute, cmd.Context == MuteContext.Quieti ? QuietiContext.Mute : QuietiContext.UserMute);
+            _filter.Issued(cmd.Key, cmd.Mute, before);
+            Trace.WriteLine($"Quieti SetMute {tracked.App} {cmd.Key.Value} mute={cmd.Mute} {cmd.Context}");
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Quieti SetMute failed {tracked.App} {cmd.Key.Value} mute={cmd.Mute} {cmd.Context}: {ex.Message}");
+            _pending.Enqueue((new EngineEvent.MuteFailed(cmd.Key), tracked.App));
+        }
+        return tracked.App;
+    }
+
+    private void OnForeground()
+    {
+        if (_engine == null || _stopped)
+        {
+            return;
+        }
+        (uint Pid, FgWindow Window)? read;
+        try
+        {
+            read = ForegroundWatcher.Read(_ownPid);
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Quieti foreground read failed: {ex.Message}");
+            return;
+        }
+        if (read is not { } fg)
+        {
+            Trace.WriteLine("Quieti foreground ignored: no foreground window");
+            return;
+        }
+        if (AppRules.IsNeutral(fg.Window))
+        {
+            Trace.WriteLine($"Quieti foreground ignored (neutral): {fg.Window.Exe} {fg.Window.Class} own={fg.Window.Own}");
+            return;
+        }
+        var app = ForegroundAppKey(fg.Pid, fg.Window.Exe);
+        Trace.WriteLine($"Quieti foreground: {app} pid={fg.Pid}");
+        Feed(new EngineEvent.Foreground(new Fg(fg.Pid, app)), null);
+    }
+
+    /// <summary>Store apps are keyed by AppId like their sessions (AppKeyOf); other apps by exe name.</summary>
+    private static string ForegroundAppKey(uint pid, string exe)
+    {
+        if (Kernel32Helper.IsPackagedProcess(pid))
+        {
+            try
+            {
+                var info = AppInformationFactory.CreateForProcess(pid);
+                var key = AppKeyOf(info.IsDesktopApp, info.AppId);
+                if (key.Length > 0)
+                {
+                    return key;
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Quieti foreground app info failed pid={pid}: {ex.Message}");
+            }
+        }
+        return exe;
+    }
+
+    private void OnMuteNotified(AudioDeviceSession session, bool muted, Guid context)
+    {
+        if (_stopped || !_sessions.TryGetValue(session.Id, out var tracked) || tracked.Session != session)
+        {
+            return;
+        }
+        var kind = context == QuietiContext.Mute ? NoticeKind.Quieti
+            : context == QuietiContext.UserMute ? NoticeKind.UserMute
+            : NoticeKind.External;
+        if (_filter.Accept(tracked.Key, muted, kind) is { } ev)
+        {
+            Feed(ev, tracked.App);
+        }
+    }
+
+    // ---- Session discovery ----
+
+    private void OnModelChanged(object sender, NotifyCollectionChangedEventArgs e) => Resync();
+
+    private void OnSessionPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(IAudioDeviceSession.State) && sender is AudioDeviceSession { State: SessionState.Expired })
+        {
+            Resync();
+        }
+    }
+
+    /// <summary>
+    ///     Walks playback devices → Groups → group Children (app groups, then grouping-param groups) down to the
+    ///     real AudioDeviceSession objects, listens to every collection on the way, and turns the difference
+    ///     with the tracked set into SessionGone (first) and SessionAdded events. Expired sessions count as gone.
+    /// </summary>
+    private void Resync()
+    {
+        if (_engine == null || _stopped)
+        {
+            return;
+        }
+        var collections = new List<INotifyCollectionChanged>();
+        var live = new List<AudioDeviceSession>();
+        var liveById = new Dictionary<string, AudioDeviceSession>(StringComparer.Ordinal);
+
+        void Walk(IAudioDeviceSession node)
+        {
+            switch (node)
+            {
+                case AudioDeviceSession real:
+                    if (real.State != SessionState.Expired && liveById.TryAdd(real.Id, real))
+                    {
+                        live.Add(real);
+                    }
+                    break;
+                case AudioDeviceSessionGroup group:
+                    collections.Add(group.Children);
+                    foreach (var child in group.Children.ToArray())
+                    {
+                        Walk(child);
+                    }
+                    break;
+            }
+        }
+
+        foreach (var device in _playback.Devices.ToArray())
+        {
+            collections.Add(device.Groups);
+            foreach (var group in device.Groups.ToArray())
+            {
+                Walk(group);
+            }
+        }
+
+        var keep = collections.ToHashSet();
+        foreach (var old in _watched.Where(c => !keep.Contains(c)).ToList())
+        {
+            old.CollectionChanged -= OnModelChanged;
+            _watched.Remove(old);
+        }
+        foreach (var collection in collections)
+        {
+            if (_watched.Add(collection))
+            {
+                collection.CollectionChanged += OnModelChanged;
+            }
+        }
+
+        var gone = _sessions.Values
+            .Where(t => !liveById.TryGetValue(t.Key.Value, out var s) || s != t.Session)
+            .ToList();
+        foreach (var tracked in gone)
+        {
+            Untrack(tracked);
+        }
+        foreach (var session in live)
+        {
+            if (!_sessions.ContainsKey(session.Id))
+            {
+                Track(session);
+            }
+        }
+    }
+
+    private void Track(AudioDeviceSession session)
+    {
+        var key = new SessionKey(session.Id);
+        var identifier = session.Identifier ?? "";
+        var app = AppKeyOf(session.IsDesktopApp, session.AppId);
+        if (app.Length == 0)
+        {
+            app = AppRules.AppOfIdentifier(identifier);
+        }
+        var tracked = new Tracked(session, key, app);
+        _sessions[session.Id] = tracked;
+        session.MuteNotified += OnMuteNotified;
+        session.PropertyChanged += OnSessionPropertyChanged;
+
+        var ancestors = AppRules.Ancestors(ProcessTree.Chain(session.ProcessId));
+        var info = new SessionInfo(key, session.ProcessId, app, session.DisplayName ?? app, ancestors, identifier, session.IsMuted);
+        Feed(new EngineEvent.SessionAdded(info), app);
+    }
+
+    private void Untrack(Tracked tracked)
+    {
+        // A nested Resync (from an AppChanged handler) may already have replaced or removed it.
+        if (!_sessions.TryGetValue(tracked.Key.Value, out var current) || current != tracked)
+        {
+            return;
+        }
+        _sessions.Remove(tracked.Key.Value);
+        tracked.Session.MuteNotified -= OnMuteNotified;
+        tracked.Session.PropertyChanged -= OnSessionPropertyChanged;
+        _filter.Forget(tracked.Key);
+        Feed(new EngineEvent.SessionGone(tracked.Key), tracked.App);
+    }
+
+    // ---- Persistence ----
+
+    private string[] Load(string key)
+    {
+        try
+        {
+            return _settings.Get(key, Array.Empty<string>()) ?? [];
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Quieti could not read {key}: {ex.Message}");
+            return [];
+        }
+    }
+
+    private void SaveIfChanged()
+    {
+        var armed = _engine.Armed;
+        if (!_savedArmed.SetEquals(armed))
+        {
+            _savedArmed = new HashSet<string>(armed, StringComparer.Ordinal);
+            Save(ArmedKey, _savedArmed);
+        }
+        var ours = _engine.Ours();
+        if (!_savedOurs.SetEquals(ours))
+        {
+            _savedOurs = new HashSet<string>(ours, StringComparer.Ordinal);
+            Save(RecoveredKey, _savedOurs);
+        }
+    }
+
+    private void Save(string key, IEnumerable<string> values)
+    {
+        try
+        {
+            _settings.Set(key, values.OrderBy(v => v, StringComparer.Ordinal).ToArray());
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Quieti could not save {key}: {ex.Message}");
+        }
+    }
+}
