@@ -92,6 +92,9 @@
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\EarTrumpet.Quieti.Core\EarTrumpet.Quieti.Core.csproj" />
+    </ItemGroup>
     <Target Name="BeforeBuild" DependsOnTargets="GetVersion">
         <PropertyGroup Condition=" '$(Channel)'=='Store' ">
             <ChannelVersion>$(GitVersion_MajorMinorPatch).0</ChannelVersion>
