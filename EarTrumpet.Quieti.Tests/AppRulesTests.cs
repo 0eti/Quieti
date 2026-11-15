@@ -33,6 +33,30 @@ public class AppRulesTests
     }
 
     [Fact]
+    public void app_key_of_desktop_app_is_file_name_of_app_id_path()
+    {
+        Assert.Equal("powershell.exe",
+            AppRules.AppKeyOf(true, @"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"));
+        Assert.Equal("chrome.exe", AppRules.AppKeyOf(true, @"C:\X\Chrome.EXE"));
+    }
+
+    [Fact]
+    public void app_key_of_store_app_is_app_id_unchanged()
+    {
+        const string appId = "Microsoft.ZuneMusic_8wekyb3d8bbwe!App";
+        Assert.Equal(appId, AppRules.AppKeyOf(false, appId));
+    }
+
+    [Fact]
+    public void app_key_of_missing_app_id_is_empty()
+    {
+        Assert.Equal("", AppRules.AppKeyOf(true, null));
+        Assert.Equal("", AppRules.AppKeyOf(false, null));
+        Assert.Equal("", AppRules.AppKeyOf(true, ""));
+        Assert.Equal("", AppRules.AppKeyOf(false, ""));
+    }
+
+    [Fact]
     public void ancestors_stop_before_explorer()
     {
         var chain = new[] { P(3, "a.exe"), P(2, "b.exe"), P(1, "explorer.exe"), P(0, "x.exe") };

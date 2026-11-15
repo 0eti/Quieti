@@ -52,6 +52,22 @@ public sealed class MuteEngine
         => _sessions.Values.Where(s => s.Ours).Select(s => s.Info.Identifier)
             .Concat(_recovered).ToHashSet(StringComparer.Ordinal);
 
+    /// <summary>
+    ///     이 세션의 음소거가 Quieti 것인가(엔진이 하나뿐인 진실). 음소거 복사와 볼륨 보호가 이것을 묻는다.
+    ///     되살린 세션·형제 세션도 Quieti 것이고, 완전 음소거로 넘어간 세션·체크를 푼 앱의 세션은 아니다.
+    /// </summary>
+    public bool IsOurs(SessionKey key) => _sessions.TryGetValue(key, out var s) && s.Ours;
+
+    /// <summary>
+    ///     완전 음소거가 켜져 있나(오른쪽 클릭·M이 끄는 쪽인가). 음소거 실패 세션은 빼고 본다:
+    ///     그 세션 하나 때문에 영영 끌 수 없게 되지 않도록. Quieti 음소거만 된 앱은 꺼져 있다(켜면 완전 음소거로 바뀐다).
+    /// </summary>
+    public bool IsFullMuted(string app)
+    {
+        var ss = _sessions.Values.Where(s => s.App == app && !s.Failed).ToList();
+        return ss.Count > 0 && ss.All(s => s.Muted) && ss.Any(s => s.Full);
+    }
+
     public AppState StateOf(string app)
     {
         var ss = _sessions.Values.Where(s => s.App == app).ToList();
@@ -129,6 +145,8 @@ public sealed class MuteEngine
                 }
                 break;
             case EngineEvent.Shutdown:
+                // Quieti 음소거를 모두 푼다. 체크·앞 창은 그대로라 다음 사건(앞 창 바뀜 등)에서 규칙이 이어진다
+                // (로그오프가 취소된 경우).
                 foreach (var s in _sessions.Values.Where(s => s.Ours))
                 {
                     s.Ours = false;

@@ -437,4 +437,111 @@ public class MuteEngineTests
         Cmds(e.Handle(Fore(2, Video)));
         Assert.Equal(AppState.FullMuted, e.StateOf(Video));
     }
+    // ---- 누구의 음소거인가(IsOurs): 엔진이 하나뿐인 진실 ----
+
+    [Fact]
+    public void is_ours_after_quieti_mute()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        Cmds(e.Handle(Added("v", 2, Video, false)), Mute("v", true));
+        Assert.True(e.IsOurs(K("v")));
+    }
+
+    [Fact]
+    public void is_ours_for_recovered_session()
+    {
+        var e = EngineRec(new[] { Video }, new[] { IdOf(Video) });
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("v", 2, Video, true));
+        Assert.True(e.IsOurs(K("v")));
+    }
+
+    [Fact]
+    public void is_ours_for_sibling_session()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("v1", 2, Video, false));
+        e.Handle(Added("v2", 3, Video, true));
+        Assert.True(e.IsOurs(K("v2")));
+    }
+
+    [Fact]
+    public void is_not_ours_after_full_mute_takes_over()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("v", 2, Video, false));
+        e.Handle(Full(Video, true));
+        Assert.False(e.IsOurs(K("v")));
+    }
+
+    [Fact]
+    public void is_not_ours_after_unarm()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("v", 2, Video, false));
+        e.Handle(Arm(Video, false));
+        Assert.False(e.IsOurs(K("v")));
+    }
+
+    [Fact]
+    public void is_not_ours_for_user_mute_or_unknown_session()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(2, Video));
+        e.Handle(Added("v", 2, Video, false));
+        e.Handle(User("v", true));
+        Assert.False(e.IsOurs(K("v")));
+        Assert.False(e.IsOurs(K("nope")));
+    }
+
+    // ---- 다 풀기(Shutdown) 뒤에도 규칙이 이어진다(로그오프 취소) ----
+
+    [Fact]
+    public void rules_resume_after_release_all()
+    {
+        var e = Engine(Video);
+        e.Handle(Fore(1, Game));
+        Cmds(e.Handle(Added("v", 2, Video, false)), Mute("v", true));
+        Cmds(e.Handle(new EngineEvent.Shutdown()), Mute("v", false));
+        Assert.False(e.IsOurs(K("v")));
+        Cmds(e.Handle(Fore(5, Browser)), Mute("v", true));
+        Assert.True(e.IsOurs(K("v")));
+        Assert.Equal(Set(IdOf(Video)), e.Ours());
+        Cmds(e.Handle(Fore(2, Video)), Mute("v", false));
+    }
+
+    // ---- 완전 음소거 켜짐/꺼짐 판단(IsFullMuted) ----
+
+    [Fact]
+    public void full_mute_is_on_only_for_user_mute()
+    {
+        var e = Engine(Video);
+        Assert.False(e.IsFullMuted(Video));
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("v", 2, Video, false));
+        Assert.False(e.IsFullMuted(Video)); // Quieti 음소거: 켜면 완전 음소거로 바뀐다
+        e.Handle(Full(Video, true));
+        Assert.True(e.IsFullMuted(Video));
+        e.Handle(Full(Video, false));
+        Assert.False(e.IsFullMuted(Video));
+    }
+
+    [Fact]
+    public void full_mute_can_be_turned_off_despite_failed_session()
+    {
+        var e = Engine();
+        e.Handle(Fore(1, Game));
+        e.Handle(Added("a", 2, Video, false));
+        e.Handle(Added("b", 3, Video, false));
+        e.Handle(new EngineEvent.MuteFailed(K("b")));
+        e.Handle(Full(Video, true));
+        e.Handle(new EngineEvent.MuteFailed(K("b")));
+        Assert.Equal(AppState.CannotMute, e.StateOf(Video));
+        Assert.True(e.IsFullMuted(Video));
+        Cmds(e.Handle(Full(Video, false)), Mute("a", false, MuteContext.User), Mute("b", false, MuteContext.User));
+    }
 }

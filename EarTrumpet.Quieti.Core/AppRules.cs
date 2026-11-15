@@ -35,6 +35,13 @@ public static class AppRules
     public static string KeyForApp(bool isDesktopApp, string exeName, string appId)
         => isDesktopApp ? AppKey(exeName) : appId;
 
+    /// <summary>
+    ///     세션·앱 줄의 앱 키. 데스크톱 앱은 AppId(전체 exe 경로)의 파일 이름(확장자 포함, 소문자),
+    ///     스토어 앱은 AppId 그대로. 없으면 "".
+    /// </summary>
+    public static string AppKeyOf(bool isDesktopApp, string? appId)
+        => KeyForApp(isDesktopApp, appId ?? "", appId ?? "");
+
     /// <summary>부모들의 pid(셸 앞까지, 자기는 뺀다).</summary>
     public static IReadOnlyList<uint> Ancestors(IReadOnlyList<Proc> chain)
         => chain.Skip(1).TakeWhile(p => p.Exe != Shell).Select(p => p.Pid).ToList();
