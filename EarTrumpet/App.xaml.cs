@@ -108,8 +108,10 @@ public sealed partial class App : IDisposable
         ((UI.Themes.Manager)Resources["ThemeManager"]).Load();
 
         var deviceManager = WindowsAudioFactory.Create(AudioDeviceKind.Playback);
-        // Quieti: same settings bag as AppSettings. WPF's SessionEnding (logoff, shutdown) also ends in Exit.
+        // Quieti: same settings bag as AppSettings. On logoff/shutdown WPF raises Exit only via a posted
+        // callback that may not run in time, so also undo Quieti mutes in SessionEnding (Shutdown runs once).
         QuietiService.Current.Start(deviceManager, StorageFactory.GetSettings());
+        SessionEnding += (_, __) => QuietiService.Current.Shutdown();
         Exit += (_, __) => QuietiService.Current.Shutdown();
         deviceManager.Loaded += (_, __) => CompleteStartup();
         CollectionViewModel = new DeviceCollectionViewModel(deviceManager, Settings);
