@@ -225,7 +225,9 @@ public class AppSettings
                 id = Guid.NewGuid();
                 _settings.Set("TrayIconId", id);
             }
-            return id;
+            // Quieti: Windows binds the GUID to the exe path that first used it, and the Debug and Release
+            // builds share these settings from different folders, so each path gets its own GUID.
+            return Quieti.TrayIconId.For(id, Environment.ProcessPath ?? "");
         }
     }
 
