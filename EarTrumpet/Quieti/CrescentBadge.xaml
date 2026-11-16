@@ -5,22 +5,22 @@
              xmlns:local="clr-namespace:EarTrumpet.Quieti"
              IsHitTestVisible="False"
              IsTabStop="False">
-    <!-- A circle with a crescent bite taken out of its right side (the Quieti moon). -->
+    <!-- The Quieti moon, same proportions as the old Quieti icon (disc 16,16 r14; bite 23,16 r9.5 on a 32 grid):
+         a circle with a level bite taken out of its right side. -->
     <Viewbox Stretch="Uniform">
-        <Path Width="100"
-              Height="100"
-              Theme:Brush.Fill="{Binding FillTheme, RelativeSource={RelativeSource AncestorType=local:CrescentBadge}}"
-              Stretch="Fill">
-            <Path.Data>
-                <CombinedGeometry GeometryCombineMode="Exclude">
-                    <CombinedGeometry.Geometry1>
-                        <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50" />
-                    </CombinedGeometry.Geometry1>
-                    <CombinedGeometry.Geometry2>
-                        <EllipseGeometry Center="78,36" RadiusX="38" RadiusY="38" />
-                    </CombinedGeometry.Geometry2>
-                </CombinedGeometry>
-            </Path.Data>
-        </Path>
+        <Canvas Width="100" Height="100">
+            <Path Theme:Brush.Fill="{Binding FillTheme, RelativeSource={RelativeSource AncestorType=local:CrescentBadge}}">
+                <Path.Data>
+                    <CombinedGeometry GeometryCombineMode="Exclude">
+                        <CombinedGeometry.Geometry1>
+                            <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50" />
+                        </CombinedGeometry.Geometry1>
+                        <CombinedGeometry.Geometry2>
+                            <EllipseGeometry Center="75,50" RadiusX="34" RadiusY="34" />
+                        </CombinedGeometry.Geometry2>
+                    </CombinedGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
     </Viewbox>
 </UserControl>
