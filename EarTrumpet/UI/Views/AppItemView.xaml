@@ -26,6 +26,14 @@
                             <DataTrigger Binding="{Binding IsMuted}" Value="true">
                                 <Setter Property="Opacity" Value="{StaticResource MutedOpacity}" />
                             </DataTrigger>
+                            <!-- Quieti: armed but still audible (in front) shows a moon over the icon, dimmed like a mute. -->
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsBackgroundMuteArmed}" Value="True" />
+                                    <Condition Binding="{Binding IsMuted}" Value="False" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Opacity" Value="{StaticResource MutedOpacity}" />
+                            </MultiDataTrigger>
                             <DataTrigger Binding="{Binding Source, ElementName=AppIcon}" Value="{x:Null}">
                                 <Setter Property="Theme:Brush.Background" Value="SystemAccent" />
                             </DataTrigger>
@@ -73,6 +81,13 @@
                             <DataTrigger Binding="{Binding IsMuted}" Value="true">
                                 <Setter Property="Opacity" Value="1" />
                             </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsBackgroundMuteArmed}" Value="True" />
+                                    <Condition Binding="{Binding IsMuted}" Value="False" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Opacity" Value="1" />
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
@@ -88,6 +103,13 @@
                                         <!-- Quieti: keep this glyph's X but hide its speaker (left 45% of the em square;
                                              speaker ends at 37.5%, X starts at 50.9%). QuietiMuteGlyph draws the moon
                                              there, so the X is the very same text in both mute states. -->
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsBackgroundMuteArmed}" Value="True" />
+                                                <Condition Binding="{Binding IsMuted}" Value="False" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </MultiDataTrigger>
                                         <DataTrigger Binding="{Binding IsMutedByQuieti}" Value="True">
                                             <Setter Property="OpacityMask">
                                                 <Setter.Value>
@@ -115,6 +137,29 @@
                                         <DataTrigger Binding="{Binding IsMutedByQuieti}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </quieti:QuietiMuteGlyph.Style>
+                        </quieti:QuietiMuteGlyph>
+                        <!-- Quieti: armed but still audible (in front): the moon alone, centered. -->
+                        <quieti:QuietiMuteGlyph Width="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
+                                                Height="{DynamicResource Mutable_DeviceVolumeTextFontSize}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Centered="True"
+                                                FillTheme="{Binding (Theme:Brush.Foreground), RelativeSource={RelativeSource AncestorType=Button}}"
+                                                Opacity="0.8">
+                            <quieti:QuietiMuteGlyph.Style>
+                                <Style TargetType="quieti:QuietiMuteGlyph">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsBackgroundMuteArmed}" Value="True" />
+                                                <Condition Binding="{Binding IsMuted}" Value="False" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </quieti:QuietiMuteGlyph.Style>

@@ -12,6 +12,21 @@
          (bite radius 9.5/14, offset 7/14 of the disc radius, level) and stays left of the X (x >= 50.9). -->
     <Viewbox Stretch="Uniform">
         <Canvas Width="100" Height="100">
+            <!-- Centered: the crescent spans x 1..42.2 (tips where the two circles meet), so moving it by 28 puts
+                 its middle on the em square's middle. -->
+            <Canvas.Style>
+                <Style TargetType="Canvas">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Centered, RelativeSource={RelativeSource AncestorType=local:QuietiMuteGlyph}}" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <TranslateTransform X="28" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Canvas.Style>
             <Path Theme:Brush.Fill="{Binding FillTheme, RelativeSource={RelativeSource AncestorType=local:QuietiMuteGlyph}}">
                 <Path.Data>
                     <CombinedGeometry GeometryCombineMode="Exclude">
