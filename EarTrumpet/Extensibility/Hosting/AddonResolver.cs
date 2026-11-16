@@ -25,7 +25,8 @@ internal class AddonResolver
         Trace.WriteLine($"AddonResolver Load");
         try
         {
-            var rootAddonDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Addons");
+            // Quieti: AppContext.BaseDirectory also works in a single-file exe, where Assembly.Location is empty.
+            var rootAddonDir = Path.Combine(AppContext.BaseDirectory, "Addons");
             if (Directory.Exists(rootAddonDir))
             {
                 catalogs.AddRange(Directory.GetDirectories(rootAddonDir).
