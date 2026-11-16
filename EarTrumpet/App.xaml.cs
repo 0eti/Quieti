@@ -112,6 +112,8 @@ public sealed partial class App : IDisposable
         // callback that may not run in time, so also undo Quieti mutes in SessionEnding. That only releases
         // (the logoff may be cancelled and EarTrumpet keep running); the full Shutdown runs once, on Exit.
         QuietiService.Current.Start(deviceManager, StorageFactory.GetSettings());
+        QuietiDisplay.Current.ShowBadge = Settings.ShowQuietiBadge;
+        Settings.ShowQuietiBadgeChanged += (_, show) => QuietiDisplay.Current.ShowBadge = show;
         SessionEnding += (_, __) => QuietiService.Current.ReleaseAll();
         Exit += (_, __) => QuietiService.Current.Shutdown();
         deviceManager.Loaded += (_, __) => CompleteStartup();
@@ -197,7 +199,7 @@ public sealed partial class App : IDisposable
         if (Settings.UseScrollWheelInTray && (!Settings.UseGlobalMouseWheelHook || _flyoutViewModel.State == FlyoutViewState.Hidden))
         {
             CollectionViewModel.Default?.IncrementVolume(
-                Math.Sign(wheelDelta) * (Settings.UseLogarithmicVolume ? 0.2f : 2.0f));
+                Math.Sign(wheelDelta) * VolumeStep.Delta(Settings.VolumeStepPercent, Settings.UseLogarithmicVolume));
         }
     }
 
@@ -373,6 +375,7 @@ public sealed partial class App : IDisposable
             EarTrumpet.Properties.Resources.SettingsDescriptionText,
             null,
             [
+                new QuietiSettingsPageViewModel(Settings),
                 new EarTrumpetShortcutsPageViewModel(Settings),
                 new EarTrumpetMouseSettingsPageViewModel(Settings),
                 new EarTrumpetCommunitySettingsPageViewModel(Settings),
@@ -419,7 +422,7 @@ public sealed partial class App : IDisposable
         foreach (var device in CollectionViewModel.AllDevices.Where(d => !d.IsMuted || d.IsAbsMuted))
         {
             device.IsAbsMuted = false;
-            device.IncrementVolume(2);
+            device.IncrementVolume(Settings.VolumeStepPercent);
         }
     }
 
@@ -428,7 +431,7 @@ public sealed partial class App : IDisposable
         foreach (var device in CollectionViewModel.AllDevices.Where(d => !d.IsMuted))
         {
             var wasMuted = device.IsMuted;
-            device.Volume -= 2;
+            device.Volume -= Settings.VolumeStepPercent;
 
             if (!wasMuted == (device.Volume <= 0))
             {

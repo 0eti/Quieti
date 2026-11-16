@@ -1172,6 +1172,33 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volume change per mouse-wheel step or volume hotkey press.
+        /// </summary>
+        public static string QuietiVolumeStepText {
+            get {
+                return ResourceManager.GetString("QuietiVolumeStepText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show a small moon on apps set to mute while in background.
+        /// </summary>
+        public static string QuietiShowBadgeText {
+            get {
+                return ResourceManager.GetString("QuietiShowBadgeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Quieti when I sign in to Windows.
+        /// </summary>
+        public static string QuietiStartWithWindowsText {
+            get {
+                return ResourceManager.GetString("QuietiStartWithWindowsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Left-click: mute while in background · Right-click: mute.
         /// </summary>
         public static string QuietiMuteButtonHint {

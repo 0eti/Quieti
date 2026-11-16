@@ -679,4 +679,13 @@
   <data name="QuietiMuteButtonHint" xml:space="preserve">
     <value>왼쪽 클릭: 뒤에 있으면 음소거 · 오른쪽 클릭: 음소거</value>
   </data>
+  <data name="QuietiVolumeStepText" xml:space="preserve">
+    <value>마우스 휠 한 칸이나 볼륨 단축키 한 번에 바꿀 볼륨</value>
+  </data>
+  <data name="QuietiShowBadgeText" xml:space="preserve">
+    <value>뒤에 있으면 음소거가 켜진 앱 아이콘에 작은 달 표시</value>
+  </data>
+  <data name="QuietiStartWithWindowsText" xml:space="preserve">
+    <value>Windows에 로그인하면 Quieti 시작</value>
+  </data>
 </root>

@@ -688,4 +688,13 @@ Open [https://eartrumpet.app/jmp/fixstartup] to resolve this?</value>
   <data name="QuietiMuteButtonHint" xml:space="preserve">
     <value>Left-click: mute while in background · Right-click: mute</value>
   </data>
+  <data name="QuietiVolumeStepText" xml:space="preserve">
+    <value>Volume change per mouse-wheel step or volume hotkey press</value>
+  </data>
+  <data name="QuietiShowBadgeText" xml:space="preserve">
+    <value>Show a small moon on apps set to mute while in background</value>
+  </data>
+  <data name="QuietiStartWithWindowsText" xml:space="preserve">
+    <value>Start Quieti when I sign in to Windows</value>
+  </data>
 </root>

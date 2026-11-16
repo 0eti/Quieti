@@ -134,6 +134,25 @@ public class AppSettings
         set => _settings.Set("IsExpanded", value);
     }
 
+    // Quieti: volume moved by one mouse-wheel notch or one volume hotkey press (1-10 %, default 2 like EarTrumpet).
+    public int VolumeStepPercent
+    {
+        get => Quieti.VolumeStep.Clamp(_settings.Get("Quieti.VolumeStep", Quieti.VolumeStep.Default));
+        set => _settings.Set("Quieti.VolumeStep", Quieti.VolumeStep.Clamp(value));
+    }
+
+    // Quieti: the small moon on the icon of apps set to "mute while in background".
+    public event EventHandler<bool> ShowQuietiBadgeChanged;
+    public bool ShowQuietiBadge
+    {
+        get => _settings.Get("Quieti.ShowBadge", true);
+        set
+        {
+            _settings.Set("Quieti.ShowBadge", value);
+            ShowQuietiBadgeChanged?.Invoke(null, value);
+        }
+    }
+
     public bool UseScrollWheelInTray
     {
         get => _settings.Get("UseScrollWheelInTray", true);

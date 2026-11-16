@@ -202,7 +202,7 @@ public class VolumeSlider : Slider
 
     private void OnMouseWheel(object sender, MouseWheelEventArgs e)
     {
-        var amount = Math.Sign(e.Delta) * (App.Settings.UseLogarithmicVolume ? 0.2 : 2.0);
+        var amount = Math.Sign(e.Delta) * Quieti.VolumeStep.Delta(App.Settings.VolumeStepPercent, App.Settings.UseLogarithmicVolume);
         ChangePositionByAmount(amount);
         e.Handled = true;
     }

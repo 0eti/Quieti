@@ -10,6 +10,7 @@
         xmlns:resx="clr-namespace:EarTrumpet.Properties"
         xmlns:vm="clr-namespace:EarTrumpet.UI.ViewModels"
         xmlns:conv="clr-namespace:EarTrumpet.UI.Converters"
+        xmlns:quieti="clr-namespace:EarTrumpet.Quieti"
         Name="WindowRoot"
         Title="{Binding Title}"
         Width="800"
@@ -162,6 +163,32 @@
                                     Content="{Binding AbsoluteVolumeDownHotkey}"
                                     IsTabStop="False" />
                 </Grid>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type quieti:QuietiSettingsPageViewModel}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock VerticalAlignment="Center"
+                           Style="{StaticResource BodyText}"
+                           Text="{x:Static resx:Resources.QuietiVolumeStepText}" />
+                <StackPanel Margin="12,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <Slider Width="200"
+                            IsSnapToTickEnabled="True"
+                            Maximum="10"
+                            Minimum="1"
+                            TickFrequency="1"
+                            Value="{Binding VolumeStepPercent, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center"
+                               Style="{StaticResource BodyText}"
+                               Text="{Binding VolumeStepPercent, StringFormat=\{0\}%}" />
+                </StackPanel>
+                <CheckBox HorizontalAlignment="Left"
+                          Content="{x:Static resx:Resources.QuietiShowBadgeText}"
+                          IsChecked="{Binding ShowBadge, Mode=TwoWay}" />
+                <CheckBox HorizontalAlignment="Left"
+                          Content="{x:Static resx:Resources.QuietiStartWithWindowsText}"
+                          IsChecked="{Binding StartWithWindows, Mode=TwoWay}" />
             </StackPanel>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:EarTrumpetMouseSettingsPageViewModel}">

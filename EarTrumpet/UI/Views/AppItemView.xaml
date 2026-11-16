@@ -140,9 +140,13 @@
                         <Style TargetType="quieti:CrescentBadge">
                             <Setter Property="Visibility" Value="Collapsed" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsBackgroundMuteArmed}" Value="True">
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsBackgroundMuteArmed}" Value="True" />
+                                        <Condition Binding="{Binding ShowBadge, Source={x:Static quieti:QuietiDisplay.Current}}" Value="True" />
+                                    </MultiDataTrigger.Conditions>
                                     <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
+                                </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
                     </quieti:CrescentBadge.Style>

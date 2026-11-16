@@ -17,6 +17,7 @@ In the flyout and the full mixer, the app icon on each row is the control:
 - While Quieti has muted an app, its icon shows a moon and an X instead of the speaker and X of the mute glyph.
 - Quieti only unmutes what it muted; apps you muted yourself stay muted. Full-muting an app Quieti already muted keeps it muted, and turning full mute off returns it to the background rule.
 - Quieti's own flyout, the Start menu, the taskbar and the desktop do not count as switching apps.
+- Settings > Quieti: the volume step for the mouse wheel and the volume hotkeys (1-10 %, default 2 %), the small moon badge on/off, and starting Quieti when you sign in to Windows (off by default; it adds `Quieti` to the user's Run key).
 - Settings are stored in the registry under `HKCU\Software\Quieti`, apart from EarTrumpet's; the Quieti settings are `Quieti.Armed` and `Quieti.Recovered`. If the app crashes, leftover mutes are released or taken over on the next start.
 
 Build (requires the .NET 8 SDK):
