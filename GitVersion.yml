@@ -1,4 +1,7 @@
 assembly-versioning-scheme: MajorMinorPatchTag
+ignore:
+  # Quieti: skip upstream EarTrumpet history so its 2.x tags do not set Quieti's version.
+  commits-before: 2026-11-01T00:00:00
 branches:
   feature:
     mode: ContinuousDeployment
