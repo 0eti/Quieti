@@ -903,7 +903,8 @@
                                                 </Style>
                                             </Border.Style>
                                         </Border>
-                                        <TextBlock Grid.Column="1"
+                                        <TextBlock x:Name="pageGlyph"
+                                                   Grid.Column="1"
                                                    HorizontalAlignment="Center"
                                                    FontSize="16"
                                                    Text="{Binding Glyph}">
@@ -917,6 +918,38 @@
                                                 </Style>
                                             </TextBlock.Style>
                                         </TextBlock>
+                                        <!-- Quieti: the page has no font glyph; this is Quieti's level-bite moon drawn as a 1 px
+                                             outline in a 16 px em square centered like the font glyphs (GlyphTextBlockStyle), with
+                                             QuietiMuteGlyph's proportions (the crescent spans x 1.75..14.3), in the glyph's color. -->
+                                        <Path Grid.Column="1"
+                                              Width="16"
+                                              Height="16"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Stroke="{Binding Foreground, ElementName=pageGlyph}"
+                                              StrokeLineJoin="Round"
+                                              StrokeThickness="1">
+                                            <Path.Data>
+                                                <CombinedGeometry GeometryCombineMode="Exclude">
+                                                    <CombinedGeometry.Geometry1>
+                                                        <EllipseGeometry Center="8.75,8" RadiusX="7" RadiusY="7" />
+                                                    </CombinedGeometry.Geometry1>
+                                                    <CombinedGeometry.Geometry2>
+                                                        <EllipseGeometry Center="12.25,8" RadiusX="4.75" RadiusY="4.75" />
+                                                    </CombinedGeometry.Geometry2>
+                                                </CombinedGeometry>
+                                            </Path.Data>
+                                            <Path.Style>
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Title}" Value="Quieti">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Path.Style>
+                                        </Path>
                                         <TextBlock Grid.Column="2"
                                                    Margin="4,0,12,0"
                                                    FontSize="15"

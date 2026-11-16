@@ -11,7 +11,7 @@ public class QuietiSettingsPageViewModel : SettingsPageViewModel
     {
         _settings = settings;
         Title = "Quieti";
-        Glyph = "\xE708"; // QuietHours (moon)
+        Glyph = ""; // SettingsWindow draws Quieti's moon for this page (matched by Title)
     }
 
     public int VolumeStepPercent
