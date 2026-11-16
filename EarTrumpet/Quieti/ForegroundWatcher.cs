@@ -59,6 +59,11 @@ internal static class ForegroundWatcher
         // A managed exception must not cross the native user32 callback (it would take the process down).
         try
         {
+            unsafe
+            {
+                var now = PInvoke.GetForegroundWindow();
+                Trace.WriteLine($"Quieti foreground event hwnd=0x{(nint)hwnd.Value:x} {ClassOf(hwnd)} now=0x{(nint)now.Value:x} {ClassOf(now)}");
+            }
             s_onChange?.Invoke();
         }
         catch (Exception ex)
@@ -66,6 +71,9 @@ internal static class ForegroundWatcher
             Trace.WriteLine($"Quieti ForegroundWatcher callback failed: {ex}");
         }
     }
+
+    /// <summary>Handle of the current foreground window (0 when there is none). Cheap: for polling.</summary>
+    public static unsafe nint CurrentHandle() => (nint)PInvoke.GetForegroundWindow().Value;
 
     /// <summary>The current foreground window, or null when there is none. ownPid is this process.</summary>
     public static (uint Pid, FgWindow Window)? Read(uint ownPid)

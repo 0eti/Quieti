@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Threading;
 
 namespace EarTrumpet.Quieti;
 
@@ -41,6 +42,16 @@ public sealed class QuietiService
     /// <summary>Group collections under the playback devices that we listen to.</summary>
     private readonly HashSet<INotifyCollectionChanged> _watched = [];
     private readonly uint _ownPid = (uint)Environment.ProcessId;
+
+    /// <summary>
+    ///     Windows does not send a foreground event for every switch (seen when going back and forth between
+    ///     Chrome and an Electron window), so the foreground handle is also checked on a timer. The timer runs only
+    ///     while an armed app has a session, and a check that finds the same window does nothing.
+    /// </summary>
+    private static readonly TimeSpan PollInterval = TimeSpan.FromMilliseconds(250);
+    private DispatcherTimer _poll;
+    /// <summary>The foreground handle OnForeground last read.</summary>
+    private nint _lastForeground;
 
     private MuteEngine _engine;
     private IAudioDeviceManager _playback;
@@ -82,6 +93,8 @@ public sealed class QuietiService
 
         // The engine treats every armed app as background until it knows the foreground:
         // feed the current foreground before any session (Rust ruling).
+        _poll = new DispatcherTimer(DispatcherPriority.Background) { Interval = PollInterval };
+        _poll.Tick += OnPoll;
         ForegroundWatcher.Install(OnForeground);
         OnForeground();
 
@@ -147,6 +160,7 @@ public sealed class QuietiService
         }
         Trace.WriteLine("Quieti Shutdown");
         ForegroundWatcher.Uninstall();
+        _poll?.Stop();
         Feed(new EngineEvent.Shutdown(), null);
         _stopped = true;
 
@@ -204,10 +218,39 @@ public sealed class QuietiService
                     AppChanged?.Invoke(changed);
                 }
             }
+            UpdatePolling();
         }
         finally
         {
             _draining = false;
+        }
+    }
+
+    /// <summary>Runs the foreground timer only while an armed app has a session (otherwise nothing could change).</summary>
+    private void UpdatePolling()
+    {
+        if (_poll == null)
+        {
+            return;
+        }
+        var needed = !_stopped && _sessions.Values.Any(t => _engine.IsArmed(t.App));
+        if (needed && !_poll.IsEnabled)
+        {
+            // _lastForeground is what OnForeground last read, so a switch made before the start is caught too.
+            _poll.Start();
+        }
+        else if (!needed && _poll.IsEnabled)
+        {
+            _poll.Stop();
+        }
+    }
+
+    private void OnPoll(object sender, EventArgs e)
+    {
+        if (ForegroundWatcher.CurrentHandle() != _lastForeground)
+        {
+            Trace.WriteLine("Quieti foreground changed without an event");
+            OnForeground();
         }
     }
 
@@ -253,6 +296,7 @@ public sealed class QuietiService
         {
             return;
         }
+        _lastForeground = ForegroundWatcher.CurrentHandle();
         (uint Pid, FgWindow Window)? read;
         try
         {
