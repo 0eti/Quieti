@@ -2,6 +2,8 @@
     <PropertyGroup>
         <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
         <OutputType>WinExe</OutputType>
+        <AssemblyName>Quieti</AssemblyName>
+        <RootNamespace>EarTrumpet</RootNamespace>
         <WarningsAsErrors>true</WarningsAsErrors>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <UseVSHostingProcess>false</UseVSHostingProcess>

@@ -136,7 +136,7 @@
     <value>Φαίνεται να μην έχετε συσκευές αναπαραγωγής ήχου.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Δεν υπάρχουν συσκευές αναπαραγωγής</value>
+    <value>Quieti: Δεν υπάρχουν συσκευές αναπαραγωγής</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Συσκευές αναπαραγωγής</value>
@@ -238,7 +238,7 @@
     <value>Ρύθμιση συντομεύσεων και λήψη βοήθειας</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Ρυθμίσεις EarTrumpet</value>
+    <value>Ρυθμίσεις Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Συντομεύσεις</value>
@@ -277,21 +277,21 @@
     <value>Κλείσιμο</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Καλώς ήλθατε στο EarTrumpet</value>
+    <value>Καλώς ήλθατε στο Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>Το EarTrumpet δεν μπόρεσε να ξεκινήσει</value>
+    <value>Το Quieti δεν μπόρεσε να ξεκινήσει</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Μια προβληματική γραμματοσειρά στο σύστημά σας, εμποδίζει το EarTrumpet να ξεκινήσει.
+    <value>Μια προβληματική γραμματοσειρά στο σύστημά σας, εμποδίζει το Quieti να ξεκινήσει.
 
 Άνοιγμα του [https://eartrumpet.app/jmp/fixfonts] τώρα;</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Τα Windows δεν έχουν κάποιες καταχωρήσεις στο μητρώο, που εμποδίζουν το EarTrumpet να ξεκινήσει αυτόματα κατά την έναρξη.
+    <value>Τα Windows δεν έχουν κάποιες καταχωρήσεις στο μητρώο, που εμποδίζουν το Quieti να ξεκινήσει αυτόματα κατά την έναρξη.
 
 Ανοίξτε [https://eartrumpet.app/jmp/fixstartup] για να το επιλύσετε;</value>
   </data>
@@ -410,13 +410,13 @@
     <value>Επεξεργασία</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Ενέργειες Xml EarTrumpet</value>
+    <value>Ενέργειες Xml Quieti</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet ξεκινά ή τερματίζεται</value>
+    <value>Quieti ξεκινά ή τερματίζεται</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Κάθε εφαρμογή</value>
@@ -662,10 +662,10 @@
     <value>Ρυθμίσεις ποντικιού</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Χρήση του τροχού κύλισης για αυξομείωση της έντασης, ενώ ο κέρσορας αιωρείται πάνω από το εικονίδιο του EarTrumpet</value>
+    <value>Χρήση του τροχού κύλισης για αυξομείωση της έντασης, ενώ ο κέρσορας αιωρείται πάνω από το εικονίδιο του Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
-    <value>Χρήση του τροχού κύλισης για αυξομείωση της έντασης, ενώ η επικάλυψη του EarTrumpet είναι ανοιχτή</value>
+    <value>Χρήση του τροχού κύλισης για αυξομείωση της έντασης, ενώ η επικάλυψη του Quieti είναι ανοιχτή</value>
   </data>
   <data name="CommunitySettingsPageText" xml:space="preserve">
     <value>Ρυθμίσεις κοινότητας</value>

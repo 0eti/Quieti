@@ -136,7 +136,7 @@
     <value>Het lijkt erop dat je geen afspeelapparaten hebt.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Geen afspeelapparaten</value>
+    <value>Quieti: Geen afspeelapparaten</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Afspeelapparaten</value>
@@ -238,7 +238,7 @@
     <value>Configureer sneltoetsen en Help</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet-instellingen</value>
+    <value>Quieti-instellingen</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Sneltoetsen</value>
@@ -277,13 +277,13 @@
     <value>Sluiten</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Welkom bij EarTrumpet</value>
+    <value>Welkom bij Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet kan niet worden gestart</value>
+    <value>Quieti kan niet worden gestart</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Een lettertype veroorzaakt een probleem waardoor EarTrumpet niet kan worden gestart.
+    <value>Een lettertype veroorzaakt een probleem waardoor Quieti niet kan worden gestart.
 
 Wil je [https://eartrumpet.app/jmp/fixfonts] openen om het probleem op te lossen?</value>
   </data>
@@ -402,13 +402,13 @@ Wil je [https://eartrumpet.app/jmp/fixfonts] openen om het probleem op te lossen
     <value>Bewerken</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Acties XML</value>
+    <value>Quieti Acties XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet start of stopt</value>
+    <value>Quieti start of stopt</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Iedere app</value>
@@ -654,7 +654,7 @@ Wil je [https://eartrumpet.app/jmp/fixfonts] openen om het probleem op te lossen
     <value>Muisinstellingen</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Gebruik het scrollwiel om volume te veranderen terwijl de muisaanwijzer boven het EarTrumpet-icoon staat</value>
+    <value>Gebruik het scrollwiel om volume te veranderen terwijl de muisaanwijzer boven het Quieti-icoon staat</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Gebruik het scrollwiel om volume te veranderen wanneer uitklapmenu open is</value>

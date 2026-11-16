@@ -136,7 +136,7 @@
     <value>Näyttää siltä, että sinulla ei ole toistolaitteita.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Ei toistolaitteita</value>
+    <value>Quieti: Ei toistolaitteita</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Toistolaitteet</value>
@@ -238,7 +238,7 @@
     <value>Määritä pikanäppäimet tai hae apua</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet asetukset</value>
+    <value>Quieti asetukset</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Pikanäppäimet</value>
@@ -277,21 +277,21 @@
     <value>Sulje</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Tervetuloa EarTrumpettiin</value>
+    <value>Tervetuloa Quietitiin</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpetia ei voitu käynnistää</value>
+    <value>Quietiia ei voitu käynnistää</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Järjestelmäsi rikkoutunut fontti estää EarTrumpettiä käynnistymästä.
+    <value>Järjestelmäsi rikkoutunut fontti estää Quietitiä käynnistymästä.
 
 Avaa [https://eartrumpet.app/jmp/fixfonts] nyt?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windowsista puuttuu rekisterimerkintöjä jotka mahdollistavat EarTrumpetin automaattisen käynnistymisen.
+    <value>Windowsista puuttuu rekisterimerkintöjä jotka mahdollistavat Quietiin automaattisen käynnistymisen.
 
 Avaa [https://eartrumpet.app/jmp/fixstartup] tämän ratkaisemiseksi?</value>
   </data>
@@ -410,13 +410,13 @@ Avaa [https://eartrumpet.app/jmp/fixstartup] tämän ratkaisemiseksi?</value>
     <value>Muokkaa</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Toiminnot XML</value>
+    <value>Quieti Toiminnot XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet käynnistyy tai sulkeutuu</value>
+    <value>Quieti käynnistyy tai sulkeutuu</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Jokainen sovellus</value>
@@ -662,7 +662,7 @@ Avaa [https://eartrumpet.app/jmp/fixstartup] tämän ratkaisemiseksi?</value>
     <value>Hiiren asetukset</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Käytä vierityspyörää muuttaa äänenvoimakkuutta kun leijuu yli EarTrumpet-kuvaketta</value>
+    <value>Käytä vierityspyörää muuttaa äänenvoimakkuutta kun leijuu yli Quieti-kuvaketta</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Käytä vierityspyörää vaihtaaksesi äänenvoimakkuutta kun esittelypaneeli on näkyvissä</value>

@@ -136,7 +136,7 @@
     <value>Sembla que no teniu dispositius de reproducció.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: No hi ha dispositius de reproducció</value>
+    <value>Quieti: No hi ha dispositius de reproducció</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Dispositius de reproducció</value>
@@ -238,7 +238,7 @@
     <value>Configureu dreceres i obtingueu ajuda</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Configuració d'EarTrumpet</value>
+    <value>Configuració d'Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Dreceres</value>
@@ -277,20 +277,20 @@
     <value>Tanca</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Us donem la benvinguda a l'EarTrumpet</value>
+    <value>Us donem la benvinguda a l'Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>L'EarTrumpet no s'ha pogut iniciar</value>
+    <value>L'Quieti no s'ha pogut iniciar</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Una font invàlida del vostre sistema no deixa que l'EarTrumpet s'iniciï.
+    <value>Una font invàlida del vostre sistema no deixa que l'Quieti s'iniciï.
 Voleu accedir a [https://eartrumpet.app/jmp/fixfonts] ara?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Al Windows li falten entrades de registre que impedeixen que l'EarTrumpet s'iniciï automàticament.
+    <value>Al Windows li falten entrades de registre que impedeixen que l'Quieti s'iniciï automàticament.
 
 Voleu obrir [https://eartrumpet.app/jmp/fixstartup] per resoldre-ho?</value>
   </data>
@@ -409,13 +409,13 @@ Voleu obrir [https://eartrumpet.app/jmp/fixstartup] per resoldre-ho?</value>
     <value>Edita</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Accions d'EarTrumpet XML</value>
+    <value>Accions d'Quieti XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>L'EarTrumpet comença o acaba</value>
+    <value>L'Quieti comença o acaba</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Cada aplicació</value>
@@ -661,7 +661,7 @@ Voleu obrir [https://eartrumpet.app/jmp/fixstartup] per resoldre-ho?</value>
     <value>Configuració del ratolí</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Utilitzeu la roda de desplaçament per canviar el volum mentre passeu el cursor per sobre de la icona EarTrumpet</value>
+    <value>Utilitzeu la roda de desplaçament per canviar el volum mentre passeu el cursor per sobre de la icona Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Utilitzeu la roda de desplaçament per canviar el volum mentre el control flotant està obert</value>

@@ -5,7 +5,10 @@ namespace EarTrumpet.DataModel.Storage.Internal;
 
 internal class RegistrySettingsBag : ISettingsBag
 {
-    private static readonly string s_earTrumpetKey = @"Software\EarTrumpet";
+    // Quieti: its own key, apart from an installed EarTrumpet's. A separate key also gives the tray icon its own
+    // TrayIconId: Windows binds a tray icon GUID to the exe path that first used it, so Quieti.exe cannot reuse
+    // the GUID EarTrumpet.exe registered.
+    private static readonly string s_earTrumpetKey = @"Software\Quieti";
 
     public string Namespace => "";
 

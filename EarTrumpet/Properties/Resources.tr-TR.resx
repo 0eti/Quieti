@@ -136,7 +136,7 @@
     <value>Herhangi bir oynatma aygıtınız yok gibi görünüyor.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Oynatma aygıtı bulunamadı</value>
+    <value>Quieti: Oynatma aygıtı bulunamadı</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Oynatma aygıtları</value>
@@ -238,7 +238,7 @@
     <value>Kısayolları yapılandırın ve yardım alın</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet Ayarları</value>
+    <value>Quieti Ayarları</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Kısayollar</value>
@@ -277,10 +277,10 @@
     <value>Kapat</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet'a hoş geldiniz</value>
+    <value>Quieti'a hoş geldiniz</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet başlatılamadı</value>
+    <value>Quieti başlatılamadı</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
     <value>Sisteminizde bozuk bir yazı tipi eartrumpet'in başlamasını engelliyor.
@@ -288,10 +288,10 @@
 [https://eartrumpet.app/jmp/fixfonts] açmak ister misiniz?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>EarTrumpet'ın otomatik olarak açılabilmesi için gereken Windows kayıt defteri girdileri eksik.
+    <value>Quieti'ın otomatik olarak açılabilmesi için gereken Windows kayıt defteri girdileri eksik.
 
 Çözmek için [https://eartrumpet.app/jmp/fixstartup] açılsın mı?</value>
   </data>
@@ -410,13 +410,13 @@
     <value>Düzenle</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Eylemler XMLsi</value>
+    <value>Quieti Eylemler XMLsi</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet başlayınca veya durunca</value>
+    <value>Quieti başlayınca veya durunca</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Her uygulama</value>
@@ -662,7 +662,7 @@
     <value>Fare ayarları</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>EarTrumpet simgesinin üzerindeyken ses seviyesini değiştirmek için kaydırma tekerleğini kullanın</value>
+    <value>Quieti simgesinin üzerindeyken ses seviyesini değiştirmek için kaydırma tekerleğini kullanın</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Açılır pencere açıkken ses seviyesini değiştirmek için kaydırma tekerleğini kullanın</value>

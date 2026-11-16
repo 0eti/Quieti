@@ -136,7 +136,7 @@
     <value>Videti je, da nimate predvajalnih naprav.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: ni predvajalnih naprav</value>
+    <value>Quieti: ni predvajalnih naprav</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Predvajalne naprave</value>
@@ -238,7 +238,7 @@
     <value>Nastavitve bližnjic in pomoč</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Nastavitve za EarTrumpet</value>
+    <value>Nastavitve za Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Bližnjice</value>
@@ -277,21 +277,21 @@
     <value>Zapri</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Pozdravljeni v EarTrumpet</value>
+    <value>Pozdravljeni v Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>Programa EarTrumpet ni bilo mogoče zagnati</value>
+    <value>Programa Quieti ni bilo mogoče zagnati</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Pokvarjena pisava na vašem sistemu preprečuje, da bi se EarTrumpet zagnal.
+    <value>Pokvarjena pisava na vašem sistemu preprečuje, da bi se Quieti zagnal.
 
 Ali želite zdaj odpreti [https://eartrumpet.app/jmp/fixfonts]?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>V sistemu Windows manjkajo vnosi v register, ki preprečujejo samodejni zagon aplikacije EarTrumpet.
+    <value>V sistemu Windows manjkajo vnosi v register, ki preprečujejo samodejni zagon aplikacije Quieti.
 
 Želite odpreti [https://eartrumpet.app/jmp/fixstartup], da odpravite to težavo?</value>
   </data>
@@ -413,10 +413,10 @@ Ali želite zdaj odpreti [https://eartrumpet.app/jmp/fixfonts]?</value>
     <value>Trumpet Dejanja XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet se začne ali konča</value>
+    <value>Quieti se začne ali konča</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Vsaka aplikacija</value>
@@ -662,7 +662,7 @@ Ali želite zdaj odpreti [https://eartrumpet.app/jmp/fixfonts]?</value>
     <value>Nastavitve miške</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Z miškinim kolescem spremenite glasnost, medtem ko ste z miško nad ikono EarTrumpet</value>
+    <value>Z miškinim kolescem spremenite glasnost, medtem ko ste z miško nad ikono Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Z miškinim kolescem spremenite glasnost, ko je pojavni meni odprt</value>

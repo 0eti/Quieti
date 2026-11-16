@@ -136,7 +136,7 @@
     <value>Sembra che tu non abbia alcun dispositivo di riproduzione.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Nessun dispositivo di riproduzione</value>
+    <value>Quieti: Nessun dispositivo di riproduzione</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Dispositivi di riproduzione</value>
@@ -238,7 +238,7 @@
     <value>Configura le scorciatoie e ottieni aiuto</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Impostazioni EarTrumpet</value>
+    <value>Impostazioni Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Scorciatoie</value>
@@ -277,21 +277,21 @@
     <value>Chiudi</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Benvenuto su EarTrumpet</value>
+    <value>Benvenuto su Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>Avvio di EarTrumpet non riuscito</value>
+    <value>Avvio di Quieti non riuscito</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Un font corrotto nel tuo sistema impedisce l'avvio di EarTrumpet.
+    <value>Un font corrotto nel tuo sistema impedisce l'avvio di Quieti.
 
 Aprire [https://eartrumpet.app/jmp/fixfonts] ora?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>A Windows mancano le voci del Registro di sistema necessarie, il che impedisce l'avvio automatico di EarTrumpet.
+    <value>A Windows mancano le voci del Registro di sistema necessarie, il che impedisce l'avvio automatico di Quieti.
 
 Aprire [https://eartrumpet.app/jmp/fixstartup] per risolvere il problema?</value>
   </data>
@@ -410,13 +410,13 @@ Aprire [https://eartrumpet.app/jmp/fixstartup] per risolvere il problema?</value
     <value>Modifica</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Azioni XML di EarTrumpet</value>
+    <value>Azioni XML di Quieti</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet si avvia o si arresta</value>
+    <value>Quieti si avvia o si arresta</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Tutte le app</value>
@@ -662,7 +662,7 @@ Aprire [https://eartrumpet.app/jmp/fixstartup] per risolvere il problema?</value
     <value>Impostazioni mouse</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Usa la rotella di scorrimento per cambiare volume al passaggio sull'icona di EarTrumpet</value>
+    <value>Usa la rotella di scorrimento per cambiare volume al passaggio sull'icona di Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Usa la rotella di scorrimento per cambiare il volume mentre il riquadro a comparsa è aperto</value>

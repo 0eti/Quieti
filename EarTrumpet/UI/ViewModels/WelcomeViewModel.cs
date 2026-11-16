@@ -26,7 +26,7 @@ internal class WelcomeViewModel
     {
         _settings = settings;
         Title = Properties.Resources.WelcomeDialogHeaderText;
-        LearnMore = new RelayCommand(() => ProcessHelper.StartNoThrow("https://github.com/File-New-Project/EarTrumpet"));
+        LearnMore = new RelayCommand(() => ProcessHelper.StartNoThrow("https://github.com/0eti/Quieti"));
         OpenPrivacy = new RelayCommand(() => ProcessHelper.StartNoThrow("https://github.com/File-New-Project/EarTrumpet/blob/master/PRIVACY.md"));
     }
 

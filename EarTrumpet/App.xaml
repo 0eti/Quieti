@@ -113,8 +113,8 @@
             <Thickness x:Key="NoItemsPaneMargin">24</Thickness>
             <bcl:Double x:Key="MutedOpacity">0.4</bcl:Double>
 
-            <bcl:String x:Key="EarTrumpetIconLight">pack://application:,,,/EarTrumpet;component/Assets/Icon-Light.ico</bcl:String>
-            <bcl:String x:Key="EarTrumpetIconDark">pack://application:,,,/EarTrumpet;component/Assets/Icon-Dark.ico</bcl:String>
+            <bcl:String x:Key="EarTrumpetIconLight">pack://application:,,,/Quieti;component/Assets/Icon-Light.ico</bcl:String>
+            <bcl:String x:Key="EarTrumpetIconDark">pack://application:,,,/Quieti;component/Assets/Icon-Dark.ico</bcl:String>
 
             <Style x:Key="Windows10FocusVisualStyle">
                 <Setter Property="Control.Template">
@@ -2178,7 +2178,7 @@
                                     Orientation="Vertical">
                             <Image Height="275"
                                    HorizontalAlignment="Left"
-                                   gif:AnimationBehavior.SourceUri="pack://application:,,,/EarTrumpet;component/Assets/Welcome.gif"
+                                   gif:AnimationBehavior.SourceUri="pack://application:,,,/Quieti;component/Assets/Welcome.gif"
                                    gif:AnimationBehavior.RepeatBehavior="Forever" />
                             <CheckBox Margin="0,20,12,-6"
                                         HorizontalAlignment="Left"

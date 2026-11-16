@@ -136,7 +136,7 @@
     <value>Có vẻ như bạn không có thiết bị phát lại nào cả.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Không có thiết bị phát lại</value>
+    <value>Quieti: Không có thiết bị phát lại</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Thiết bị phát lại</value>
@@ -238,7 +238,7 @@
     <value>Cấu hình phím tắt và nhận trợ giúp</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Cài đặt EarTrumpet</value>
+    <value>Cài đặt Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Phím tắt</value>
@@ -277,13 +277,13 @@
     <value>Đóng</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Chào mừng bạn đến với EarTrumpet</value>
+    <value>Chào mừng bạn đến với Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet không thể khởi chạy</value>
+    <value>Quieti không thể khởi chạy</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Một phông chữ trên máy bạn đang ngăn cản EarTrumpet khởi chạy.
+    <value>Một phông chữ trên máy bạn đang ngăn cản Quieti khởi chạy.
 
 Mở [https://eartrumpet.app/jmp/fixfonts] ngay?</value>
   </data>
@@ -402,13 +402,13 @@ Mở [https://eartrumpet.app/jmp/fixfonts] ngay?</value>
     <value>Chỉnh sửa</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Hành động EarTrumpet XML</value>
+    <value>Hành động Quieti XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet khởi chạy hoặc thoát ra</value>
+    <value>Quieti khởi chạy hoặc thoát ra</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Mỗi ứng dụng</value>
@@ -654,7 +654,7 @@ Mở [https://eartrumpet.app/jmp/fixfonts] ngay?</value>
     <value>Cài đặt chuột</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Cuộn chuột để chỉnh âm lượng khi đưa con trỏ lên biểu tượng EarTrumpet</value>
+    <value>Cuộn chuột để chỉnh âm lượng khi đưa con trỏ lên biểu tượng Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Cuộn chuột để chỉnh âm lượng khi phần menu mở rộng đang hiển thị</value>

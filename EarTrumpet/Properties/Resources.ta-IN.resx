@@ -136,7 +136,7 @@
     <value>உங்களிடம் எந்த இயக்கல் சாதனங்களும் இல்லை போல் தெரிகிறது.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: இயக்கல் சாதனங்கள் எதுவுமில்லை</value>
+    <value>Quieti: இயக்கல் சாதனங்கள் எதுவுமில்லை</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>இயக்கல் சாதனங்கள்</value>
@@ -238,7 +238,7 @@
     <value>விசை குறுக்குவழிகளை அமைக்கவும் மற்றும் உதவி பெறவும்</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet அமைப்புகள்</value>
+    <value>Quieti அமைப்புகள்</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>குறுக்குவழி</value>
@@ -277,13 +277,13 @@
     <value>மூடு</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet இற்கு வருக</value>
+    <value>Quieti இற்கு வருக</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpetஐ தொடங்க முடியவில்லை</value>
+    <value>Quietiஐ தொடங்க முடியவில்லை</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>உங்கள் கணினியில் ஒரு உடைந்த எழுத்துரு EarTrumpet தொடங்குவதிலிருந்து தடுக்கிறது.
+    <value>உங்கள் கணினியில் ஒரு உடைந்த எழுத்துரு Quieti தொடங்குவதிலிருந்து தடுக்கிறது.
 
 இப்போது [https://eartrumpet.app/jmp/fixfonts] திறக்கவா?</value>
   </data>

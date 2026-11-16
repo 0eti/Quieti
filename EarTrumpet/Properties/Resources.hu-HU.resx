@@ -136,7 +136,7 @@
     <value>Úgy tűnik, hogy nem találhatóak lejátszóeszközök.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Nem található lejátszóeszköz</value>
+    <value>Quieti: Nem található lejátszóeszköz</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Lejátszóeszközök</value>
@@ -190,7 +190,7 @@
     <value>Általános</value>
   </data>
   <data name="MoveButtonAccessibleText" xml:space="preserve">
-    <value>Az EarTrumpet hozzárendelése egy lejátszóeszközhöz</value>
+    <value>Az Quieti hozzárendelése egy lejátszóeszközhöz</value>
   </data>
   <data name="SettingsOpenEarTrumpetText" xml:space="preserve">
     <value>Nyissa meg a Tálca sávot</value>
@@ -238,7 +238,7 @@
     <value>Gyorsbillentyűk beállítása és segítségkérés</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Az EarTrumpet Beállításai</value>
+    <value>Az Quieti Beállításai</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Gyorsbillentyűk</value>
@@ -277,13 +277,13 @@
     <value>Bezár</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Üdvözli az EarTrumpet</value>
+    <value>Üdvözli az Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>Az EarTrumpet nem tudott elindulni</value>
+    <value>Az Quieti nem tudott elindulni</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Egy hibás betűtípus az Ön rendszerében megakadályozza az EarTrumpet alkalmazás elindulását.
+    <value>Egy hibás betűtípus az Ön rendszerében megakadályozza az Quieti alkalmazás elindulását.
 
 Most megnyitja a [https://eartrumpet.app/jmp/fixfonts] fájlt?</value>
   </data>

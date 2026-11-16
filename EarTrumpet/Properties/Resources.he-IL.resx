@@ -136,7 +136,7 @@
     <value>נראה שאין לך שום מכשירי השמעה.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: אין מכשרי השמעה</value>
+    <value>Quieti: אין מכשרי השמעה</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>מכשירי השמעה</value>
@@ -193,7 +193,7 @@
     <value>הקצה את האפליקציה הזאת למכשיר השמעה</value>
   </data>
   <data name="SettingsOpenEarTrumpetText" xml:space="preserve">
-    <value>פתח את EarTrumpet</value>
+    <value>פתח את Quieti</value>
   </data>
   <data name="SettingsUseLegacyEarTrumpetIcon" xml:space="preserve">
     <value>השתמש באייקון היחודי של EarTrumpet</value>
@@ -238,7 +238,7 @@
     <value>הגדר קיצורי דרך וקבל עזרה</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>הגדרות EarTrumpet</value>
+    <value>הגדרות Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>קיצורי דרך</value>
@@ -277,21 +277,21 @@
     <value>סגור</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>ברוך הבא ל- EarTrumpet</value>
+    <value>ברוך הבא ל- Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet לא הצליח להתחיל</value>
+    <value>Quieti לא הצליח להתחיל</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>גופן (font) שבור במערכת שלך מונע מ EarTrumpet מלהתחיל.
+    <value>גופן (font) שבור במערכת שלך מונע מ Quieti מלהתחיל.
 
 פתח את [https://eartrumpet.app/jmp/fixfonts] עכשיו?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>חסרים למערכת ההפעלה ערכי רישום המונעים מ-EarTrumpet להפעיל אוטומטית. 
+    <value>חסרים למערכת ההפעלה ערכי רישום המונעים מ-Quieti להפעיל אוטומטית. 
 
 לפתוח https://eartrumpet.app/jmp/fixstartup כדי לפתור זאת?</value>
   </data>
@@ -410,13 +410,13 @@
     <value>ערוך</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>פעולות XML EarTrumpet</value>
+    <value>פעולות XML Quieti</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet התחיל או סיים</value>
+    <value>Quieti התחיל או סיים</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>כל אפליקציה</value>
@@ -662,7 +662,7 @@
     <value>הגדרות עכבר</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>השתמש בגלגל הגלילה כדי לשנות את עוצמת הקול תוך כדי ריחוף מעל סמל EarTrumpet</value>
+    <value>השתמש בגלגל הגלילה כדי לשנות את עוצמת הקול תוך כדי ריחוף מעל סמל Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>השתמש בגלגל הגלילה כדי לשנות את עוצמת הקול כאשר התפריט הנשלף פתוח</value>

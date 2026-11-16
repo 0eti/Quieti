@@ -18,7 +18,7 @@ public class ResourceLoader
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
                 {
-                    Source = new Uri($"/EarTrumpet;component/Addons/{addonNamespace}/AddonResources.xaml", UriKind.RelativeOrAbsolute)
+                    Source = new Uri($"/Quieti;component/Addons/{addonNamespace}/AddonResources.xaml", UriKind.RelativeOrAbsolute)
                 });
             }
             else

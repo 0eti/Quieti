@@ -238,7 +238,7 @@
     <value>ตั้งค่าทางลัดแลัขอความช่ายเหลือ</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>การตั้งค่า EarTrumpet</value>
+    <value>การตั้งค่า Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>ทางลัด</value>
@@ -277,13 +277,13 @@
     <value>ปิด</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>ขอต้อนัรบสู่ EarTrumpet</value>
+    <value>ขอต้อนัรบสู่ Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>ไม่สามารถเริ่ม EarTrumpet ได้</value>
+    <value>ไม่สามารถเริ่ม Quieti ได้</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>มีฟอนต์ที่พังในระบบของคุณที่ทำให้ EarTrumpet ไม่สามารถเริ่มได้
+    <value>มีฟอนต์ที่พังในระบบของคุณที่ทำให้ Quieti ไม่สามารถเริ่มได้
 
 เปิด [https://eartrumpet.app/jmp/fixfonts] ตอนนี้ไหม?</value>
   </data>
@@ -402,13 +402,13 @@
     <value>แก้ไข</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>XML การกระทำของ EarTrumpet</value>
+    <value>XML การกระทำของ Quieti</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet เริ่มหรือจบ</value>
+    <value>Quieti เริ่มหรือจบ</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>ทุกแอป</value>

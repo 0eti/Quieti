@@ -127,7 +127,7 @@
     <value>Надіслати відгук</value>
   </data>
   <data name="FullWindowTitleText" xml:space="preserve">
-    <value>Мікшер гучності EarTrumpet</value>
+    <value>Мікшер гучності Quieti</value>
   </data>
   <data name="LegacyVolumeMixerText" xml:space="preserve">
     <value>Мікшер гучності Legacy</value>
@@ -136,7 +136,7 @@
     <value>Здається, у вас немає пристроїв для відтворення.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: незнайдено пристроїв для відтворення</value>
+    <value>Quieti: незнайдено пристроїв для відтворення</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Пристрої для відтворення</value>
@@ -145,7 +145,7 @@
     <value>Пристрої для запису</value>
   </data>
   <data name="SettingsWindowText" xml:space="preserve">
-    <value>Налаштування/ Про нас EarTrumpet</value>
+    <value>Налаштування/ Про нас Quieti</value>
   </data>
   <data name="SoundsControlPanelText" xml:space="preserve">
     <value>Звук</value>
@@ -193,7 +193,7 @@
     <value>Застосувати цей додаток до пристрою для відтворення</value>
   </data>
   <data name="SettingsOpenEarTrumpetText" xml:space="preserve">
-    <value>Відкрити меню EarTrumpet</value>
+    <value>Відкрити меню Quieti</value>
   </data>
   <data name="SettingsUseLegacyEarTrumpetIcon" xml:space="preserve">
     <value>Використовувати значок legacy EarTrumpet</value>
@@ -238,7 +238,7 @@
     <value>Налаштувати сполучення клавіш та отримати допомогу</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Сполучення клавіш</value>
@@ -277,13 +277,13 @@
     <value>Закрити</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Ласкаво просимо до EarTrumpet</value>
+    <value>Ласкаво просимо до Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>Неможливо запустити EarTrumpet</value>
+    <value>Неможливо запустити Quieti</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Пошкоджений шрифт не дозволяє запустити EarTrumpet.
+    <value>Пошкоджений шрифт не дозволяє запустити Quieti.
 
 Перейти за посиланням [https://eartrumpet.app/jmp/fixfonts]?</value>
   </data>
@@ -402,13 +402,13 @@
     <value>Редагувати</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Actions XML</value>
+    <value>Quieti Actions XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet запускається або закривається</value>
+    <value>Quieti запускається або закривається</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Кожна програма</value>
@@ -654,7 +654,7 @@
     <value>Параметри миші</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Використовувати колесо прокрутки для зміни гучності при наведенні на значок EarTrumpet</value>
+    <value>Використовувати колесо прокрутки для зміни гучності при наведенні на значок Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Використовувати колесо прокрутки для зміни гучності при активному випадаючому вікні</value>

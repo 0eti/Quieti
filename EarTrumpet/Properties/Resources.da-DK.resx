@@ -136,7 +136,7 @@
     <value>Det ser ikke ud til at du har nogen afspilningsenheder.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Ingen afspilningsenheder</value>
+    <value>Quieti: Ingen afspilningsenheder</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Afspilningsenheder</value>
@@ -238,7 +238,7 @@
     <value>Konfigurer genveje og få hjælp</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet Indstillinger</value>
+    <value>Quieti Indstillinger</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Genveje</value>
@@ -277,13 +277,13 @@
     <value>Luk</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Velkommen til EarTrumpet</value>
+    <value>Velkommen til Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet kunne ikke startes</value>
+    <value>Quieti kunne ikke startes</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>En defekt skrifttype på dit system forhindrer EarTrumpet i at starte.
+    <value>En defekt skrifttype på dit system forhindrer Quieti i at starte.
 
 Åbn [https://eartrumpet.app/jmp/fixfonts] nu?</value>
   </data>
@@ -402,13 +402,13 @@
     <value>Redigér</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Handlinger XML</value>
+    <value>Quieti Handlinger XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet starter eller slutter</value>
+    <value>Quieti starter eller slutter</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Enhver app</value>

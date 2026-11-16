@@ -136,7 +136,7 @@
     <value>Se pare că nu ai nici un dispozitiv de redare.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Nu există dispozitive de redare</value>
+    <value>Quieti: Nu există dispozitive de redare</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Dispozitive de redare</value>
@@ -238,7 +238,7 @@
     <value>Configurați comenzi rapide și obțineți ajutor</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Setări EarTrumpet</value>
+    <value>Setări Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Comenzi rapide</value>
@@ -277,13 +277,13 @@
     <value>Închide</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Bine ai venit la EarTrumpet</value>
+    <value>Bine ai venit la Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet nu a putut porni</value>
+    <value>Quieti nu a putut porni</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Font-ul stricat din sistemul tău împiedică Pornirea EarTrumpet-ului.
+    <value>Font-ul stricat din sistemul tău împiedică Pornirea Quieti-ului.
 
 Deschide [https://eartrumpet.app/jmp/fixfonts] acum?</value>
   </data>
@@ -402,13 +402,13 @@ Deschide [https://eartrumpet.app/jmp/fixfonts] acum?</value>
     <value>Editează</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Acțiuni EarTrumpet XML</value>
+    <value>Acțiuni Quieti XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet începe sau se termină</value>
+    <value>Quieti începe sau se termină</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Orice aplicație</value>
@@ -654,7 +654,7 @@ Deschide [https://eartrumpet.app/jmp/fixfonts] acum?</value>
     <value>Setări mouse</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Utilizați rotița de derulare pentru a schimba volumul în timp ce planați peste pictograma EarTrumpet</value>
+    <value>Utilizați rotița de derulare pentru a schimba volumul în timp ce planați peste pictograma Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Utilizați rotița de derulare pentru a schimba volumul cât timp este deschis flyout-ul</value>

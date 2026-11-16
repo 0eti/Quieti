@@ -81,7 +81,7 @@ public class AppRulesTests
     [Fact]
     public void own_window_is_neutral()
     {
-        Assert.True(AppRules.IsNeutral(new FgWindow("eartrumpet.exe", "HwndWrapper[EarTrumpet.exe;;1]", true)));
+        Assert.True(AppRules.IsNeutral(new FgWindow("quieti.exe", "HwndWrapper[Quieti.exe;;1]", true)));
     }
 
     [Fact]

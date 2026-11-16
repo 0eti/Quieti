@@ -127,7 +127,7 @@
     <value>意見を送信</value>
   </data>
   <data name="FullWindowTitleText" xml:space="preserve">
-    <value>EarTrumpet 音量ミキサー</value>
+    <value>Quieti 音量ミキサー</value>
   </data>
   <data name="LegacyVolumeMixerText" xml:space="preserve">
     <value>音量ミキサー (旧式)</value>
@@ -136,7 +136,7 @@
     <value>再生デバイスが接続されてないようです。</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: 再生デバイスなし</value>
+    <value>Quieti: 再生デバイスなし</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>再生デバイス</value>
@@ -145,7 +145,7 @@
     <value>録音デバイス</value>
   </data>
   <data name="SettingsWindowText" xml:space="preserve">
-    <value>EarTrumpet 設定</value>
+    <value>Quieti 設定</value>
   </data>
   <data name="SoundsControlPanelText" xml:space="preserve">
     <value>サウンド</value>
@@ -238,7 +238,7 @@
     <value>ショートカットの設定やヘルプ</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet 設定</value>
+    <value>Quieti 設定</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>ショートカット</value>
@@ -277,21 +277,21 @@
     <value>閉じる</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet へようこそ</value>
+    <value>Quieti へようこそ</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpetの起動に失敗しました</value>
+    <value>Quietiの起動に失敗しました</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>システム上の破損したフォントがEarTrumpet の起動を妨げています。
+    <value>システム上の破損したフォントがQuieti の起動を妨げています。
 
 修正情報のWebページ [https://eartrumpet.app/jmp/fixfonts] を開きますか？</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>EarTrumpetが自動起動しないようにするWindowsのレジストリへの登録がありません
+    <value>Quietiが自動起動しないようにするWindowsのレジストリへの登録がありません
 
 これを解決するために [https://eartrumpet.app/jmp/fixstartup] を開きますか?</value>
   </data>
@@ -410,13 +410,13 @@
     <value>編集</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet 動作用 XML</value>
+    <value>Quieti 動作用 XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet の開始または終了時</value>
+    <value>Quieti の開始または終了時</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>すべてのアプリ</value>
@@ -662,7 +662,7 @@
     <value>マウスの設定</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>EarTrumpet のアイコン上でホイールを回し音量調整</value>
+    <value>Quieti のアイコン上でホイールを回し音量調整</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>ポップアップ上でホイールを回し音量調整</value>

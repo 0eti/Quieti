@@ -136,7 +136,7 @@
     <value>Vypadá to, že nemáte žádná zařízení pro přehrávání.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Žádná zařízení pro přehrávání</value>
+    <value>Quieti: Žádná zařízení pro přehrávání</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Zařízení pro přehrávání</value>
@@ -238,7 +238,7 @@
     <value>Konfigurovat klávesové zkratky a získat pomoc</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Nastavení EarTrumpet</value>
+    <value>Nastavení Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Klávesové zkratky</value>
@@ -277,13 +277,13 @@
     <value>Zavřít</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Vítejte v EarTrumpet</value>
+    <value>Vítejte v Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet se nepodařilo spustit</value>
+    <value>Quieti se nepodařilo spustit</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Poškozené písmo ve vašem systému zabraňuje spuštění aplikace EarTrumpet.
+    <value>Poškozené písmo ve vašem systému zabraňuje spuštění aplikace Quieti.
 
 Přejete si nyní otevřít [https://eartrumpet.app/jmp/fixfonts]?</value>
   </data>
@@ -402,13 +402,13 @@ Přejete si nyní otevřít [https://eartrumpet.app/jmp/fixfonts]?</value>
     <value>Upravit</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Akce EarTrumpet XML</value>
+    <value>Akce Quieti XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet začíná nebo končí</value>
+    <value>Quieti začíná nebo končí</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Každá aplikace</value>

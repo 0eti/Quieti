@@ -136,7 +136,7 @@
     <value>It doesn't look like you have any playback devices.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: No playback devices</value>
+    <value>Quieti: No playback devices</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Playback devices</value>
@@ -238,7 +238,7 @@
     <value>Configure shortcuts and get help</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet Settings</value>
+    <value>Quieti Settings</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Shortcuts</value>
@@ -277,21 +277,21 @@
     <value>Close</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Welcome to EarTrumpet</value>
+    <value>Welcome to Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet couldn't start</value>
+    <value>Quieti couldn't start</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>A broken font on your system is preventing EarTrumpet from starting.
+    <value>A broken font on your system is preventing Quieti from starting.
 
 Open [https://eartrumpet.app/jmp/fixfonts] now?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windows is missing registry entries that are preventing EarTrumpet from launching automatically.
+    <value>Windows is missing registry entries that are preventing Quieti from launching automatically.
 
 Open [https://eartrumpet.app/jmp/fixstartup] to resolve this?</value>
   </data>
@@ -410,13 +410,13 @@ Open [https://eartrumpet.app/jmp/fixstartup] to resolve this?</value>
     <value>Edit</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Actions XML</value>
+    <value>Quieti Actions XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet starts or ends</value>
+    <value>Quieti starts or ends</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Every app</value>
@@ -662,7 +662,7 @@ Open [https://eartrumpet.app/jmp/fixstartup] to resolve this?</value>
     <value>Mouse settings</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Use the scroll wheel to change volume while hovering over the EarTrumpet icon</value>
+    <value>Use the scroll wheel to change volume while hovering over the Quieti icon</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Use the scroll wheel to change volume while the flyout is open</value>

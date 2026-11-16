@@ -136,7 +136,7 @@
     <value>재생 장치가 없는 것 같습니다.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: 재생 장치 없음</value>
+    <value>Quieti: 재생 장치 없음</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>재생 장치</value>
@@ -238,7 +238,7 @@
     <value>단축키를 구성하거나 도움말을 확인합니다.</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet 설정</value>
+    <value>Quieti 설정</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>단축키</value>
@@ -277,21 +277,21 @@
     <value>닫기</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet 에 오신 것을 환영합니다</value>
+    <value>Quieti에 오신 것을 환영합니다</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet을 실행할 수 없습니다</value>
+    <value>Quieti를 실행할 수 없습니다</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>시스템 글꼴이 손상되어 EarTrumpet 을 실행할 수 없습니다.
+    <value>시스템 글꼴이 손상되어 Quieti를 실행할 수 없습니다.
 
 [https://eartrumpet.app/jmp/fixfonts]에 접속하여 도움말을 확인하시겠습니까?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windows 에 EarTrumpet을 자동 시작하기 위한 레지스트리 항목이 없습니다.
+    <value>Windows에 Quieti를 자동 시작하기 위한 레지스트리 항목이 없습니다.
 
 이 문제를 해결하기 위해 [https://eartrumpet.app/jmp/fixstartup]을 열어볼까요?</value>
   </data>
@@ -410,13 +410,13 @@
     <value>편집</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet 동작 XML</value>
+    <value>Quieti 동작 XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet 이 시작되거나 종료될 때</value>
+    <value>Quieti가 시작되거나 종료될 때</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet 이 {Option}</value>
+    <value> Quieti가 {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>모든 앱</value>
@@ -662,7 +662,7 @@
     <value>마우스 설정</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>EarTrumpet 아이콘 위에 마우스 커서를 올린 상태로 스크롤 휠을 돌려 볼륨 변경</value>
+    <value>Quieti 아이콘 위에 마우스 커서를 올린 상태로 스크롤 휠을 돌려 볼륨 변경</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>플라이아웃이 열렸을 때 스크롤 휠을 사용해 볼륨 변경</value>

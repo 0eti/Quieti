@@ -136,7 +136,7 @@
     <value>Det ser inte ut som att du har några uppspelningsenheter.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Inga uppspelningsenheter</value>
+    <value>Quieti: Inga uppspelningsenheter</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Uppspelningsenheter</value>
@@ -238,7 +238,7 @@
     <value>Konfigurera genvägar och få hjälp</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet-inställningar</value>
+    <value>Quieti-inställningar</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Genvägar</value>
@@ -277,21 +277,21 @@
     <value>Stäng</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Välkommen till EarTrumpet</value>
+    <value>Välkommen till Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet kunde inte starta</value>
+    <value>Quieti kunde inte starta</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Ett trasigt teckensnitt på ditt system hindrar EarTrumpet från att starta.
+    <value>Ett trasigt teckensnitt på ditt system hindrar Quieti från att starta.
 
 Öppna [https://eartrumpet.app/jmp/fixfonts] nu?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windows saknar registerposter som hindrar EarTrumpet från att starta automatiskt.
+    <value>Windows saknar registerposter som hindrar Quieti från att starta automatiskt.
 
 Öppna [https://eartrumpet.app/jmp/fixstartup] för att lösa problemet?</value>
   </data>
@@ -410,13 +410,13 @@
     <value>Redigera</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet XML-åtgärder</value>
+    <value>Quieti XML-åtgärder</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet startar eller slutar</value>
+    <value>Quieti startar eller slutar</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Alla appar</value>
@@ -662,7 +662,7 @@
     <value>Musinställningar</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Använd rullningshjulet för att ändra volym medans muspekaren hålls över EarTrumpet-ikonen</value>
+    <value>Använd rullningshjulet för att ändra volym medans muspekaren hålls över Quieti-ikonen</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Använd rullningshjulet för att ändra volymen medan fönstret är öppet</value>

@@ -127,7 +127,7 @@
     <value>Envoyer des commentaires</value>
   </data>
   <data name="FullWindowTitleText" xml:space="preserve">
-    <value>Mélangeur de volume EarTrumpet</value>
+    <value>Mélangeur de volume Quieti</value>
   </data>
   <data name="LegacyVolumeMixerText" xml:space="preserve">
     <value>Mélangeur de volume classique</value>
@@ -136,7 +136,7 @@
     <value>Il semblerait que vous n’ayez aucun périphérique de lecture.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Aucun périphérique de lecture</value>
+    <value>Quieti: Aucun périphérique de lecture</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Périphériques de lecture</value>
@@ -145,7 +145,7 @@
     <value>Périphériques d'enregistrement</value>
   </data>
   <data name="SettingsWindowText" xml:space="preserve">
-    <value>EarTrumpet Paramètres / À propos</value>
+    <value>Quieti Paramètres / À propos</value>
   </data>
   <data name="SoundsControlPanelText" xml:space="preserve">
     <value>Sons</value>
@@ -193,7 +193,7 @@
     <value>Attribuer cette application à un périphérique de lecture</value>
   </data>
   <data name="SettingsOpenEarTrumpetText" xml:space="preserve">
-    <value>Ouvrir le menu déroulant d'EarTrumpet</value>
+    <value>Ouvrir le menu déroulant d'Quieti</value>
   </data>
   <data name="SettingsUseLegacyEarTrumpetIcon" xml:space="preserve">
     <value>Utiliser l'icône originale d'EarTrumpet</value>
@@ -238,7 +238,7 @@
     <value>Configurer les raccourcis et obtenir de l'aide</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Raccourcis</value>
@@ -277,13 +277,13 @@
     <value>Fermer</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Bienvenue à EarTrumpet</value>
+    <value>Bienvenue à Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet n'a pas pu démarrer</value>
+    <value>Quieti n'a pas pu démarrer</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Une police de caractères défectueuse empêche EarTrumpet de démarrer.
+    <value>Une police de caractères défectueuse empêche Quieti de démarrer.
 
 Voulez-vous ouvrir [https://eartrumpet.app/jmp/fixfonts] maintenant?</value>
   </data>
@@ -402,13 +402,13 @@ Voulez-vous ouvrir [https://eartrumpet.app/jmp/fixfonts] maintenant?</value>
     <value>Modifier</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Action XML d'EarTrumpet</value>
+    <value>Action XML d'Quieti</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet démarre ou se termine</value>
+    <value>Quieti démarre ou se termine</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Toutes les applications</value>
@@ -654,7 +654,7 @@ Voulez-vous ouvrir [https://eartrumpet.app/jmp/fixfonts] maintenant?</value>
     <value>Paramètres de la souris</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Utiliser la molette de la souris pour modifier le volume lorsque votre curseur survole l'icône de EarTrumpet</value>
+    <value>Utiliser la molette de la souris pour modifier le volume lorsque votre curseur survole l'icône de Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Utiliser la molette de la souris pour changer le volume quand l'interface est ouverte</value>

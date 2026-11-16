@@ -127,7 +127,7 @@
     <value>Enviar feedback</value>
   </data>
   <data name="FullWindowTitleText" xml:space="preserve">
-    <value>Mezclador de volumen EarTrumpet</value>
+    <value>Mezclador de volumen Quieti</value>
   </data>
   <data name="LegacyVolumeMixerText" xml:space="preserve">
     <value>Mezclador de volumen (legado)</value>
@@ -136,7 +136,7 @@
     <value>Parece que no tienes dispositivos de reproducción.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: No hay dispositivos de reproducción</value>
+    <value>Quieti: No hay dispositivos de reproducción</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Dispositivos de reproducción</value>
@@ -193,7 +193,7 @@
     <value>Asignar esta aplicación a un dispositivo de reproducción</value>
   </data>
   <data name="SettingsOpenEarTrumpetText" xml:space="preserve">
-    <value>Abrir menú flotante de EarTrumpet</value>
+    <value>Abrir menú flotante de Quieti</value>
   </data>
   <data name="SettingsUseLegacyEarTrumpetIcon" xml:space="preserve">
     <value>Usar icono tradicional de EarTrumpet</value>
@@ -238,7 +238,7 @@
     <value>Configurar atajos y obtener ayuda</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Ajustes de EarTrumpet</value>
+    <value>Ajustes de Quieti</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Atajos</value>
@@ -277,21 +277,21 @@
     <value>Cerrar</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Bienvenido a EarTrumpet</value>
+    <value>Bienvenido a Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet no pudo iniciar</value>
+    <value>Quieti no pudo iniciar</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Una fuente rota en tu sistema está previniendo el inicio de EarTrumpet.
+    <value>Una fuente rota en tu sistema está previniendo el inicio de Quieti.
 
 Deseas abrir [https://eartrumpet.app/jmp/fixfonts] ahora?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windows carece de entradas en el registro del sistema evitando que EarTrumpet se ejecute automáticamente.
+    <value>Windows carece de entradas en el registro del sistema evitando que Quieti se ejecute automáticamente.
 
 ¿Abra [https://eartrumpet.app/jmp/fixstartup] para resolver esto?</value>
   </data>
@@ -410,13 +410,13 @@ Deseas abrir [https://eartrumpet.app/jmp/fixfonts] ahora?</value>
     <value>Editar</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>Acciones de EarTrumpet XML</value>
+    <value>Acciones de Quieti XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet comienza o termina</value>
+    <value>Quieti comienza o termina</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Todas las aplicaciones</value>
@@ -662,7 +662,7 @@ Deseas abrir [https://eartrumpet.app/jmp/fixfonts] ahora?</value>
     <value>Ajustes del ratón</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Usar la rueda de desplazamiento para cambiar el volumen al pasar por encima del icono de EarTrumpet</value>
+    <value>Usar la rueda de desplazamiento para cambiar el volumen al pasar por encima del icono de Quieti</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Usar la rueda de desplazamiento para cambiar el volumen mientras el control flotante está abierto</value>

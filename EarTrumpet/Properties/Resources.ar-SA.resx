@@ -136,7 +136,7 @@
     <value>يبدو أنه ليس لديك أي أجهزة تشغيل.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: لا توجد أجهزة تشغيل</value>
+    <value>Quieti: لا توجد أجهزة تشغيل</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>أجهزة التشغيل</value>

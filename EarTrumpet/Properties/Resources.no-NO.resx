@@ -136,7 +136,7 @@
     <value>Det ser ikke ut som om du har noen avspillingsenheter.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Ingen avspillingsenheter</value>
+    <value>Quieti: Ingen avspillingsenheter</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Avspillingsenheter</value>
@@ -238,7 +238,7 @@
     <value>Konfigurer snarveier og få hjelp</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet innstillinger</value>
+    <value>Quieti innstillinger</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Snarveier</value>
@@ -277,21 +277,21 @@
     <value>Lukk</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Velkommen til EarTrumpet</value>
+    <value>Velkommen til Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet kunne ikke starte</value>
+    <value>Quieti kunne ikke starte</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>En ødelagt font på systemet ditt hindrer EarTrumpet fra å starte.
+    <value>En ødelagt font på systemet ditt hindrer Quieti fra å starte.
 
 Åpne [https://eartrumpet.app/jmp/fixfonts] nå?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>Windows mangler register nøkler, dette forhindrer EarTrumpet å starte automatisk.
+    <value>Windows mangler register nøkler, dette forhindrer Quieti å starte automatisk.
 
 Gå til [https://eartrumpet.app/jmp/fixstartup] for å reparere dette?</value>
   </data>
@@ -410,13 +410,13 @@ Gå til [https://eartrumpet.app/jmp/fixstartup] for å reparere dette?</value>
     <value>Rediger</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet Handlinger XML</value>
+    <value>Quieti Handlinger XML</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet starter eller slutter</value>
+    <value>Quieti starter eller slutter</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Alle apper</value>
@@ -662,7 +662,7 @@ Gå til [https://eartrumpet.app/jmp/fixstartup] for å reparere dette?</value>
     <value>Innstillinger for mus</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Bruk rullehjulet til å endre volumet mens du holder musen over EarTrumpet ikonet</value>
+    <value>Bruk rullehjulet til å endre volumet mens du holder musen over Quieti ikonet</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Bruk rullehjulet for å endre folum mens flyout er åpen</value>

@@ -136,7 +136,7 @@
     <value>Izgleda da nemate uređaje za reprodukciju.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Nema uređaja za reprodukciju</value>
+    <value>Quieti: Nema uređaja za reprodukciju</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Uređaji za reprodukciju</value>
@@ -238,7 +238,7 @@
     <value>Konfiguriraj postavke i potraži pomoć</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Postavke EarTrumpeta</value>
+    <value>Postavke Quietia</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Prečaci</value>
@@ -277,21 +277,21 @@
     <value>Zatvori</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Dobrodošli u EarTrumpet</value>
+    <value>Dobrodošli u Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet se nije uspio pokrenuti</value>
+    <value>Quieti se nije uspio pokrenuti</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>Pokvaren font na Vašem sistemu onemogućava EarTrumpetu pokretanje.
+    <value>Pokvaren font na Vašem sistemu onemogućava Quietiu pokretanje.
 
 Otvoriti [https://eartrumpet.app/jmp/fixfonts]?</value>
   </data>
   <data name="MissingPoliciesDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet</value>
+    <value>Quieti</value>
   </data>
   <data name="MissingPoliciesHelpText" xml:space="preserve">
-    <value>U Windows Registry nedostaju unosi koji sprječavaju EarTrumpet u automatskom pokretanju.
+    <value>U Windows Registry nedostaju unosi koji sprječavaju Quieti u automatskom pokretanju.
 
 Otvorite [https://eartrumpet.app/jmp/fixstartup] za rješavanje problema?</value>
   </data>
@@ -410,13 +410,13 @@ Otvorite [https://eartrumpet.app/jmp/fixstartup] za rješavanje problema?</value
     <value>Uredi</value>
   </data>
   <data name="EtaXmlFileText" xml:space="preserve">
-    <value>EarTrumpet XML akcija</value>
+    <value>Quieti XML akcija</value>
   </data>
   <data name="EventTrigger_AddText" xml:space="preserve">
-    <value>EarTrumpet je pokrenut ili ugašen</value>
+    <value>Quieti je pokrenut ili ugašen</value>
   </data>
   <data name="EventTrigger_LinkText" xml:space="preserve">
-    <value> EarTrumpet {Option}</value>
+    <value> Quieti {Option}</value>
   </data>
   <data name="EveryAppText" xml:space="preserve">
     <value>Svaka aplikacija</value>
@@ -662,7 +662,7 @@ Otvorite [https://eartrumpet.app/jmp/fixstartup] za rješavanje problema?</value
     <value>Postavke miša</value>
   </data>
   <data name="SettingsUseScrollWheelInTray" xml:space="preserve">
-    <value>Koristite kotačić miša za mijenjanje glasnoće prilikom držanja miša iznad EarTrumpet ikone</value>
+    <value>Koristite kotačić miša za mijenjanje glasnoće prilikom držanja miša iznad Quieti ikone</value>
   </data>
   <data name="SettingsUseGlobalMouseWheelHook" xml:space="preserve">
     <value>Koristite kotačić miša za mijenjanje glasnoće kada je otvorena potpaleta</value>

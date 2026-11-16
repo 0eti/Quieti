@@ -1,4 +1,4 @@
-# EarTrumpet
+# Quieti
 
 ## About this fork
 
@@ -14,10 +14,10 @@ In the flyout and the full mixer, the app icon on each row is the control:
 | `M` or `.` on a focused row | Same as right-clicking the icon |
 | `Space` on a focused row | App popup (unchanged) |
 
-- While Quieti has muted an app, its icon shows a crescent instead of the mute glyph.
+- While Quieti has muted an app, its icon shows a moon and an X instead of the speaker and X of the mute glyph.
 - Quieti only unmutes what it muted; apps you muted yourself stay muted. Full-muting an app Quieti already muted keeps it muted, and turning full mute off returns it to the background rule.
-- EarTrumpet's own flyout, the Start menu, the taskbar and the desktop do not count as switching apps.
-- Settings are stored with EarTrumpet's settings (the registry under `HKCU` for this unpackaged build) as `Quieti.Armed` and `Quieti.Recovered`. If the app crashes, leftover mutes are released or taken over on the next start.
+- Quieti's own flyout, the Start menu, the taskbar and the desktop do not count as switching apps.
+- Settings are stored in the registry under `HKCU\Software\Quieti`, apart from EarTrumpet's; the Quieti settings are `Quieti.Armed` and `Quieti.Recovered`. If the app crashes, leftover mutes are released or taken over on the next start.
 
 Build (requires the .NET 8 SDK):
 
@@ -26,9 +26,9 @@ dotnet build EarTrumpet\EarTrumpet.csproj -c Release -p:Platform=x64
 dotnet test EarTrumpet.Quieti.Tests
 ```
 
-The executable ends up at `Build\Release\x64\net8.0-windows10.0.19041.0\win-x64\EarTrumpet.exe`.
+The executable ends up at `Build\Release\x64\net8.0-windows10.0.19041.0\win-x64\Quieti.exe`.
 
-Do not run it alongside the Microsoft Store version of EarTrumpet; quit that one first.
+It is named Quieti and keeps its own settings, so it does not mix with an installed EarTrumpet, but running both gives you two mixers in the tray; quit EarTrumpet first.
 
 Do not run the old standalone Quieti (the Rust tray app) at the same time either: it uses the same mute-context GUID, so the two would take over each other's mutes.
 

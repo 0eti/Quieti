@@ -249,7 +249,7 @@ public class DeviceCollectionViewModel : BindableBase, IDisposable
                 ? $"{Default.Volume:0.0} dB"
                 : $"{Default.Volume}%";
             var stateText = Default.IsMuted ? Properties.Resources.MutedText : volumeText;
-            var prefixText = $"EarTrumpet: {stateText} - ";
+            var prefixText = $"Quieti: {stateText} - ";
             var deviceName = $"{Default.DeviceDescription} ({Default.EnumeratorName})";
 
             // Remote Audio devices may not contain an enumerator name or description.

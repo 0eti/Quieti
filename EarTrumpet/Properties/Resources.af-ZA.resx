@@ -136,7 +136,7 @@
     <value>Dit kom voor of daar geen terugspeeltoestelle is nie.</value>
   </data>
   <data name="NoDeviceTrayText" xml:space="preserve">
-    <value>EarTrumpet: Geen terugspeeltoestelle</value>
+    <value>Quieti: Geen terugspeeltoestelle</value>
   </data>
   <data name="PlaybackDevicesText" xml:space="preserve">
     <value>Terugspeeltoestelle</value>
@@ -238,7 +238,7 @@
     <value>Stel kortpaaie op en kry hulp</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>EarTrumpet Instellings</value>
+    <value>Quieti Instellings</value>
   </data>
   <data name="ShortcutsPageText" xml:space="preserve">
     <value>Kortpaaie</value>
@@ -277,13 +277,13 @@
     <value>Maak toe</value>
   </data>
   <data name="WelcomeDialogHeaderText" xml:space="preserve">
-    <value>Welkom by EarTrumpet</value>
+    <value>Welkom by Quieti</value>
   </data>
   <data name="CriticalFailureDialogHeaderText" xml:space="preserve">
-    <value>EarTrumpet kon nie begin nie</value>
+    <value>Quieti kon nie begin nie</value>
   </data>
   <data name="CriticalFailureFontLookupHelpText" xml:space="preserve">
-    <value>'n Stukkende font op u stelsel verhoed tans dat EarTrumpet aan die gang kan kom.
+    <value>'n Stukkende font op u stelsel verhoed tans dat Quieti aan die gang kan kom.
 
 Wil u na [https://eartrumpet.app/jmp/fixfonts] gaan vir moontlike oplossings?</value>
   </data>

@@ -29,7 +29,7 @@ internal class EarTrumpetAboutPageViewModel : SettingsPageViewModel
         _openDiagnostics = openDiagnostics;
         Glyph = "\xE946";
         Title = Properties.Resources.AboutTitle;
-        AboutText = $"EarTrumpet {App.PackageVersion}";
+        AboutText = $"Quieti {App.PackageVersion}";
 
         OpenAboutCommand = new RelayCommand(OpenAbout);
         OpenDiagnosticsCommand = new RelayCommand(OpenDiagnostics);
@@ -48,7 +48,7 @@ internal class EarTrumpetAboutPageViewModel : SettingsPageViewModel
         _openDiagnostics.Invoke();
     }
 
-    private void OpenGitHubIssueChooser() => ProcessHelper.StartNoThrow("https://github.com/File-New-Project/EarTrumpet/issues/new/choose");
-    private void OpenAbout() => ProcessHelper.StartNoThrow("https://github.com/File-New-Project/EarTrumpet");
+    private void OpenGitHubIssueChooser() => ProcessHelper.StartNoThrow("https://github.com/0eti/Quieti/issues/new");
+    private void OpenAbout() => ProcessHelper.StartNoThrow("https://github.com/0eti/Quieti");
     private void OpenPrivacyPolicy() => ProcessHelper.StartNoThrow("https://github.com/File-New-Project/EarTrumpet/blob/master/PRIVACY.md");
 }
